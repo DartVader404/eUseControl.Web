@@ -17,5 +17,6 @@ namespace eUseControl.Domain.Entities.Product
         public string Description { get; set; }
         public HttpPostedFileBase PreviewImg { get; set; }
         public HttpPostedFileBase[] ProductImg { get; set; }
+        public DateTime AddedDate { get; set; }
     }
 }

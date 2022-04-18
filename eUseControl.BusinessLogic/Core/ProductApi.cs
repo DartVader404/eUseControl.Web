@@ -29,6 +29,7 @@ namespace eUseControl.BusinessLogic.Core
 
                 newProduct.PreImgPath = ("/Images/products/preview/" + InputFileName);                         //save preview image path to store this later in database
                 data.PreviewImg.SaveAs(ServerSavePath);                                         //save preview image on server
+                newProduct.AddedDate = DateTime.Now;
 
                 using (var db = new ProductContext())
                 {

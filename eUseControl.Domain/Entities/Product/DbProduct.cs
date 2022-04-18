@@ -38,5 +38,8 @@ namespace eUseControl.Domain.Entities.Product
 
         [Required]
         public string PreImgPath { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime AddedDate { get; set; }
     }
 }
