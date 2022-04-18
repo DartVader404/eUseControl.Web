@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "CustomersList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Product list card start -->
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="select-shoing-wrap d-flex align-items-center">
+                        <div class="shot-product">
+                            <p>Sort By:</p>
+                        </div>
+                        <!-- Single Wedge End -->
+                        <div class="header-bottom-set dropdown">
+                            <button class="dropdown-toggle header-action-btn" data-bs-toggle="dropdown">Default <i class="fa fa-angle-down"></i></button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a class="dropdown-item" href="#">Name, A to Z</a></li>
+                                <li><a class="dropdown-item" href="#">Name, Z to A</a></li>
+                                <li><a class="dropdown-item" href="#">Surname, A to Z</a></li>
+                                <li><a class="dropdown-item" href="#">Surname, Z to A</a></li>
+                            </ul>
+                        </div>
+                        <!-- Single Wedge Start -->
+                    </div>
+                    <div style="margin-left: 15px;">
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search in customers list" aria-label="Search">
+                            <button type="submit" class="btn btn-primary btn" style="width: 80px; height: 50px;">Search</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Surname</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Mail</th>
+                                <th scope="col">Phone</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="align-middle">1</th>
+                                <td class="align-middle">Mark</td>
+                                <td class="align-middle">Otto</td>
+                                <td class="align-middle">685 Carpenter Ave. Des Plaines, IL 60016</td>
+                                <td class="align-middle">grannoiyipeno-5825@yopmail.com</td>
+                                <td class="align-middle">810-388-5125</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="align-middle">2</th>
+                                <td class="align-middle">Jacob</td>
+                                <td class="align-middle">Thornton</td>
+                                <td class="align-middle">49 Tailwater Drive Harrisonburg, VA 22801</td>
+                                <td class="align-middle">troiproubraffettou-2010@yopmail.com</td>
+                                <td class="align-middle">870-425-4181</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="align-middle">2</th>
+                                <td class="align-middle">Larry</td>
+                                <td class="align-middle">the Bird</td>
+                                <td class="align-middle">432 Acacia Rd. Sioux City, IA 51106</td>
+                                <td class="align-middle">majotizasseu-2901@yopmail.com</td>
+                                <td class="align-middle">580-265-0802</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Product list card end -->
+        </div>
+    </div>
+    <!-- Add Contact Start Model start-->
+    <div class="md-modal md-effect-13 addcontact" id="modal-13">
+        <div class="md-content">
+            <h3 class="f-26">Add Product</h3>
+            <div>
+                <div class="input-group">
+                    <span class="input-group-addon btn btn-primary">Chooese File</span>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control pname" placeholder="Prodcut Name">
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control pname" placeholder="Category">
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control pamount" placeholder="Amount">
+                </div>
+                <div class="input-group">
+                    <input type="number" class="form-control pname" placeholder="num of items">
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary waves-effect m-r-20 f-w-600 d-inline-block save_btn">Save</button>
+                    <button type="button" class="btn btn-primary waves-effect m-r-20 f-w-600 md-close d-inline-block close_btn">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="md-overlay"></div>
+    <!-- Add Contact Ends Model end-->
+</div>
+

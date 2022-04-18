@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "ProductEdit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model eUseControl.Web.Models.EditProductData
+<div class="container">
+    <div class="row  d-flex justify-content-center" style="margin-top: 30px;">
+        <div class="col-8">
+            <div>
+                <h1 style="text-align: center;">Edit product details</h1>
+            </div>
+            @using (Html.BeginForm("ProductEdit", "Product", FormMethod.Post, new { autocomplete = "off", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken();
+                @Html.HiddenFor(m => m.ProductId, new {@value = Model.ProductId});
+
+                <div style="border-bottom: 1px solid black; margin-bottom: 15px;">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Current category: <span style="color: green;">@Model.Category</span></label>
+                        @Html.TextAreaFor(m => m.Category, new { @class = "form-control", id = "exampleFormControlTextarea1", rows = "1" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Current brand: <span style="color: green;">@Model.Brand</span></label>
+                        @Html.TextAreaFor(m => m.Brand, new { @class = "form-control", id = "exampleFormControlTextarea1", rows = "1" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Current name: <span style="color: green;">@Model.ProductName</span></label>
+                        @Html.TextAreaFor(m => m.ProductName, new { @class = "form-control", id = "exampleFormControlTextarea1", rows = "1" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Current quantity: <span style="color: green;">@Model.Quantity</span></label>
+                        @Html.TextAreaFor(m => m.Quantity, new { @class = "form-control", id = "exampleFormControlTextarea1", rows = "1" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Current price: <span style="color: green;">$@Model.Price</span></label>
+                        @Html.TextAreaFor(m => m.Price, new { @class = "form-control", id = "exampleFormControlTextarea1", rows = "1" })
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", id = "exampleFormControlTextarea1", rows = "8" })
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <label>Current product preview photo</label>
+                            <label class="d-flex justify-content-center" title="">
+                                <img src=@Model.PreImgPath width="320" height="320" />
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="container" style="border-top: 1px solid black; padding-top: 15px;">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="exampleInputPassword1">Select product photo to <span style="color: red;">delete</span></label>
+                        </div>
+                        @{
+                            int i = 0;
+                        }
+                        @foreach (var img in Model.Paths)
+                        {
+                            <div class="col-3">
+                                <label class="" title="">
+                                    <img src=@img.Path class="img-fluid" />
+                                    @Html.CheckBoxFor(m => m.status[i], new { @class = "form-check-input" })
+                                </label>
+                            </div>
+                            i++;
+                        }
+
+                    </div>
+                </div>
+                <div style="border-top: 1px solid black; padding-top: 15px;">
+                    <label for="exampleInputPassword1">Add new preview photo</label>
+                    <div>
+                        @Html.TextBoxFor(m => m.PreviewImg, new { type = "file" })
+                        @Html.ValidationMessageFor(model => model.PreviewImg, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="input-group" style="border-top: 1px solid black; border-bottom: 1px solid black; padding-top: 15px;">
+                    <label for="exampleInputPassword1">Add new product photo</label>
+                    @Html.TextBoxFor(m => m.ProductImg, new { type = "file", @multiple = "multiple" })
+                    @Html.ValidationMessageFor(model => model.ProductImg, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-12 d-flex justify-content-center" style="margin-bottom: 15px;">
+                    <button type="submit" class="btn btn-primary btn-xs">Save</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

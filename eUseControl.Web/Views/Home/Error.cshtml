@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Error";
+}
+
+<div class="section-404 section" style="background: rgb(2,0,36); background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(97,31,212,0.46011908181241246) 0%, rgba(0,212,255,1) 100%); ">
+    <div class="container">
+        <div class="content-404">
+            <h1 class="title">Oops!</h1>
+            <h2 class="sub-title">Page not found!</h2>
+            <p>You could either go back or go to homepage</p>
+            <div class="buttons">
+                <a class="btn btn-primary btn-outline-hover-dark" href="@Url.Action("Index", "Home")">Go back</a>
+                <a class="btn btn-dark btn-outline-hover-dark" href="@Url.Action("Index", "Home")">Homepage</a>
+            </div>
+        </div>
+    </div>
+</div>
+

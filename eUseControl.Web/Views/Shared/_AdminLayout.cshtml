@@ -1,0 +1,70 @@
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Hmart-Smart Product eCommerce html Template">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/favicon.ico" />
+    <!-- CSS
+    ============================================ -->
+    @Styles.Render("~/bundles/font-awesome/css")
+    @Styles.Render("~/bundles/icon/css")
+    @Styles.Render("~/bundles/animate/css")
+    @Styles.Render("~/bundles/swiper/css")
+    @Styles.Render("~/bundles/venobox/css")
+    @Styles.Render("~/bundles/jquery-ui/css")
+    @Styles.Render("~/bundles/main/css")
+    @Styles.Render("~/bundles/bootstrap/css")
+    @Styles.Render("~/bundles/dataTables-bootstrap4-min/css")
+    @Styles.Render("~/bundles/responsive-bootstrap4-min/css")
+    @Styles.Render("~/bundles/nifty/css")
+    @Styles.Render("~/bundles/icofont/css")
+    @Styles.Render("~/bundles/admin-main/css")
+
+    @if (IsSectionDefined("Styles"))
+    {@RenderSection("Styles", required: false)}
+
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <header>
+            @Html.Partial("_AdminHeader")
+        </header>
+
+        <div>
+            @RenderBody()
+        </div>
+
+        <footer>
+            @Html.Partial("_Footer")
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap-bundle-min/js")
+    @Scripts.Render("~/bundles/jquery-3.6.0/js")
+    @Scripts.Render("~/bundles/jquery-ui/js")
+    @Scripts.Render("~/bundles/main/js")
+    @Scripts.Render("~/bundles/jquery/js")
+    @Scripts.Render("~/bundles/popper/js")
+    @Scripts.Render("~/bundles/jquery-dataTables-min/js")
+    @Scripts.Render("~/bundles/dataTables-bootstrap4-min/js")
+    @Scripts.Render("~/bundles/dataTables-responsive-min/js")
+    @Scripts.Render("~/bundles/responsive-bootstrap4-min/js")
+    @Scripts.Render("~/bundles/classie/js")
+    @Scripts.Render("~/bundles/modalEffects/js")
+    @Scripts.Render("~/bundles/product-list/js")
+
+    @if (IsSectionDefined("Scripts"))
+    {@RenderSection("Scripts", required: false)}
+
+</body>
+
+</html>

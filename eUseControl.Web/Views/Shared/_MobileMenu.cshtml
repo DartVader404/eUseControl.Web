@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "_MobileMenu";
+}
+
+<div class="header-bottom d-lg-none sticky-nav style-1">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-lg-3 col">
+                <div class="header-logo">
+                    <a href="index.html"><img src="~/Images/logo/logo.png" alt="Site Logo" /></a>
+                </div>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block">
+                <div class="search-element">
+                    <form action="#">
+                        <input type="text" placeholder="Search" />
+                        <button><i class="pe-7s-search"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-3 col">
+                <div class="header-actions">
+                    <!-- Single Wedge End -->
+                    <a href="#" class="header-action-btn header-action-btn-cart pr-0">
+                        <i class="pe-7s-shopbag"></i>
+                        <span class="header-action-num">01</span>
+                    </a>
+                    <div class="btn-group dropstart">
+                        <a class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                            <i class="pe-7s-menu"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-lg-end">
+                            <li><a class="dropdown-item" href="@Url.Action("Index", "Home")">Home</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("About", "Home")">About</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("Contact", "Home")">Contact</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("Cart", "Home")">Cart</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("Login", "Home")">Log Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

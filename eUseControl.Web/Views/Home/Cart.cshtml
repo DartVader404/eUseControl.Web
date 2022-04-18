@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+}
+
+<!-- breadcrumb-area start -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-12 text-center">
+                <div class="hero-slide-content text-center">
+                    <h2 class="title-1">Cart</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb-area end -->
+<!-- Cart Area Start -->
+<div class="cart-main-area pt-100px pb-100px">
+    <div class="container">
+        <h3 class="cart-page-title">Your cart items</h3>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <form action="#">
+                    <div class="table-content table-responsive cart-table-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Product Name</th>
+                                    <th>Until Price</th>
+                                    <th>Qty</th>
+                                    <th>Subtotal</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="product-thumbnail">
+                                        <a href="#"><img class="img-responsive ml-15px" src="~/Images/product-image/item1.webp" alt="" /></a>
+                                    </td>
+                                    <td class="product-name"><a href="#">Apple MacBook Air 13 (2020) Space Gray</a></td>
+                                    <td class="product-price-cart"><span class="amount">$1238.50</span></td>
+                                    <td class="product-quantity">
+                                        <div style="width: 80px; margin: auto;">
+                                            <input class="cart-plus-minus-box" type="number" name="qtybutton" value="1" />
+                                        </div>
+                                    </td>
+                                    <td class="product-subtotal">$1238.50</td>
+                                    <td class="product-remove">
+                                        <a href="#"><i class="fa fa-times"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="product-thumbnail">
+                                        <a href="#"><img class="img-responsive ml-15px" src="~/Images/product-image/item2.webp" alt="" /></a>
+                                    </td>
+                                    <td class="product-name"><a href="#">Wireless On-Ear JBL T500BT <br> Black</a></td>
+                                    <td class="product-price-cart"><span class="amount">$138.00</span></td>
+                                    <td class="product-quantity">
+                                        <div style="width: 80px; margin: auto;">
+                                            <input class="cart-plus-minus-box" type="number" name="qtybutton" value="1" />
+                                        </div>
+                                    </td>
+                                    <td class="product-subtotal">$138.00</td>
+                                    <td class="product-remove">
+                                        <a href="#"><i class="fa fa-times"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="product-thumbnail">
+                                        <a href="#"><img class="img-responsive ml-15px" src="~/Images/product-image/item3.webp" alt="" /></a>
+                                    </td>
+                                    <td class="product-name"><a href="#">Samsung Galaxy S21 FE 6 GB/ 128 GB Gray</a></td>
+                                    <td class="product-price-cart"><span class="amount">$538.50</span></td>
+                                    <td class="product-quantity">
+                                        <div style="width: 80px; margin: auto;">
+                                            <input class="cart-plus-minus-box" type="number" name="qtybutton" value="1" />
+                                        </div>
+                                    </td>
+                                    <td class="product-subtotal">$538.50</td>
+                                    <td class="product-remove">
+                                        <a href="#"><i class="fa fa-times"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="cart-shiping-update-wrapper">
+                                <div class="cart-shiping-update">
+                                    <a href="#">Continue Shopping</a>
+                                </div>
+                                <div class="cart-clear">
+                                    <button>Update Shopping Cart</button>
+                                    <a href="#">Clear Shopping Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-6 col-md-12 mt-md-30px">
+                        <div class="grand-totall">
+                            <div class="title-wrap">
+                                <h4 class="cart-bottom-title section-bg-gary-cart">Cart Total</h4>
+                            </div>
+                            <h5>Total products <span>$1915.00</span></h5>
+                            <div class="total-shipping">
+                                <h5>Total shipping</h5>
+                                <ul>
+                                    <li><input type="checkbox" /> Standard <span>$20.00</span></li>
+                                    <li><input type="checkbox" /> Express <span>$30.00</span></li>
+                                </ul>
+                            </div>
+                            <h4 class="grand-totall-title">Grand Total <span>$1915.00</span></h4>
+                            <a href="@Url.Action("Checkout", "Home")">Proceed to Checkout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cart Area End -->

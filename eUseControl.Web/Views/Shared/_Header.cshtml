@@ -1,0 +1,187 @@
+﻿
+@{
+    ViewBag.Title = "_Header";
+}
+@using eUseControl.Domain.Enums;
+
+<!-- Header top area start -->
+<div class="header-top">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col">
+                <div class="welcome-text">
+                    <p>World Wide Completely Free Returns and Shipping</p>
+                </div>
+            </div>
+            <div class="col d-none d-lg-block">
+                <div class="top-nav">
+                    <ul>
+                        <li><a href="tel:0123456789"><i class="fa fa-phone"></i> +012 3456 789</a></li>
+                        <li><a href="mailto:demo@example.com"><i class="fa fa-envelope-o"></i> demo@example.com</a></li>
+                        @if (Model == null)
+                        {
+                            <li><a href="@Url.Action("MyAccount", "Home")"><i class="fa fa-user"></i> Account</a></li>
+
+                        }
+                        else if (Model.UserName == null)
+                        {
+                            <li><a href="@Url.Action("MyAccount", "Home")"><i class="fa fa-user"></i> Account</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@Url.Action("MyAccount", "Home")"><i class="fa fa-user"></i> @Model.UserName 
+                                @if (Model.Level == URole.Admin)
+                                {
+                                    <span>&nbsp- Admin</span>
+                                }
+                                else if (Model.Level == URole.Moderator)
+                                {
+                                    <span>&nbsp- Moderator</span>
+                                }
+                                </a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header top area end -->
+<!-- Header action area start -->
+<div class="header-bottom  d-none d-lg-block">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-lg-3 col">
+                <div class="header-logo">
+                    <a href="@Url.Action("Index", "Home")"><img src="~/Images/logo/logo.png" alt="Site Logo" /></a>
+                </div>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block">
+                <div class="search-element">
+                    <form action="#">
+                        <input type="text" placeholder="Search" />
+                        <button><i class="pe-7s-search"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-3 col">
+                <div class="header-actions">
+                    <!-- Single Wedge End -->
+                    @if (Model == null)
+                    {
+                        <a href="@Url.Action("Cart", "Home")" class="header-action-btn header-action-btn-cart pr-0">
+                            <i class="pe-7s-shopbag"></i>
+                        </a>
+                    }
+                    else if (Model.UserName == null)
+                    {
+                        <a href="@Url.Action("Cart", "Home")" class="header-action-btn header-action-btn-cart pr-0">
+                            <i class="pe-7s-shopbag"></i>
+                        </a>
+                    }
+                    else if (Model.Level == URole.Admin || Model.Level == URole.Moderator)
+                    {
+                        <a href="@Url.Action("Stocks", "Admin")" class="header-action-btn header-action-btn-cart pr-0">
+                            <i class="pe-7s-tools"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Cart", "Home")" class="header-action-btn header-action-btn-cart pr-0">
+                            <i class="pe-7s-shopbag"></i>
+                            <span class="header-action-num">01</span>
+                        </a>
+                    }
+
+                    <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
+                        <i class="pe-7s-menu"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header action area end -->
+<!-- Header action area start -->
+@Html.Partial("_MobileMenu")
+<!-- Header action area end -->
+<!-- header navigation area start -->
+<div class="header-nav-area d-none d-lg-block sticky-nav">
+    <div class="container">
+        <div class="header-nav">
+            <div class="main-menu position-relative">
+                <ul>
+                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li><a href="@Url.Action("About", "Home")">About</a></li>
+                    <li class="dropdown position-static">
+                        <a href="#">Brands <i class="fa fa-angle-down"></i></a>
+                        <ul class="mega-menu d-block">
+                            <li class="d-flex">
+                                <ul class="d-block">
+                                    <li class=""><a href="#">Dell</a></li>
+                                    <li class=""><a href="#">HP</a></li>
+                                    <li class=""><a href="#">Asus</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class=""><a href="#">Acer</a></li>
+                                    <li class=""><a href="#">Lenovo</a></li>
+                                    <li class=""><a href="#">Apple</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class=""><a href="#">Xiaomi</a></li>
+                                    <li class=""><a href="#">Huawei</a></li>
+                                    <li class=""><a href="#">Samsung</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class=""><a href="#">LG</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown position-static">
+                        <a href="#">
+                            Categories <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="mega-menu d-block">
+                            <li class="d-flex">
+                                <ul class="d-block">
+                                    <li class=""><a href="#">Laptop</a></li>
+                                    <li class=""><a href="#">Computer</a></li>
+                                    <li class=""><a href="#">Monitors</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class=""><a href="#">Tablet</a></li>
+                                    <li class=""><a href="#">Smart TV</a></li>
+                                    <li class=""><a href="#">Mobiles</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class=""><a href="#">Smart Watch</a></li>
+                                    <li class=""><a href="#">Speakers</a></li>
+                                    <li class=""><a href="#">Headphones</a></li>
+                                </ul>
+                                <ul class="d-block">
+                                    <li class=""><a href="#">Projectors</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- header navigation area end -->
+<div class="mobile-search-box d-lg-none">
+    <div class="container">
+        <!-- mobile search start -->
+        <div class="search-element max-width-100">
+            <form action="#">
+                <input type="text" placeholder="Search" />
+                <button><i class="pe-7s-search"></i></button>
+            </form>
+        </div>
+        <!-- mobile search start -->
+    </div>
+</div>
+

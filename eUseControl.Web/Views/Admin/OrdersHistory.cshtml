@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "OrdersHistory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Product list card start -->
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="select-shoing-wrap d-flex align-items-center">
+                        <div class="shot-product">
+                            <p>Sort By:</p>
+                        </div>
+                        <!-- Single Wedge End -->
+                        <div class="header-bottom-set dropdown">
+                            <button class="dropdown-toggle header-action-btn" data-bs-toggle="dropdown">Default <i class="fa fa-angle-down"></i></button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a class="dropdown-item" href="#">Qty, low to high</a></li>
+                                <li><a class="dropdown-item" href="#">Qty, high to low</a></li>
+                                <li><a class="dropdown-item" href="#">Total Price, low to high</a></li>
+                                <li><a class="dropdown-item" href="#">Total Price, high to low</a></li>
+                                <li><a class="dropdown-item" href="#">Sort By new</a></li>
+                                <li><a class="dropdown-item" href="#">Sort By old</a></li>
+                            </ul>
+                        </div>
+                        <!-- Single Wedge Start -->
+                    </div>
+                    <div style="margin-left: 15px;">
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search in order history" aria-label="Search">
+                            <button type="submit" class="btn btn-primary btn" style="width: 80px; height: 50px;">Search</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Surname</th>
+                                    <th scope="col">Product Name</th>
+                                    <th scope="col">Qty</th>
+                                    <th scope="col">Order time</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="align-middle">1</th>
+                                    <td class="align-middle">Mark</td>
+                                    <td class="align-middle">Otto</td>
+                                    <td class="align-middle">Apple MacBook Air 13 (2020) Gray</td>
+                                    <td class="align-middle">1</td>
+                                    <td class="align-middle">02/03/2021 08:12</td>
+                                    <td class="align-middle">$1238.50</td>
+                                    <td class="align-middle">$1238.50</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="align-middle">2</th>
+                                    <td class="align-middle">Jacob</td>
+                                    <td class="align-middle">Thornton</td>
+                                    <td class="align-middle">Wireless On-Ear JBL T500BT Black</td>
+                                    <td class="align-middle">3</td>
+                                    <td class="align-middle">01/03/2021 18:15</td>
+                                    <td class="align-middle">$138.50</td>
+                                    <td class="align-middle">$406.5</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="align-middle">2</th>
+                                    <td class="align-middle">Larry</td>
+                                    <td class="align-middle">the Bird</td>
+                                    <td class="align-middle">Samsung Galaxy S21 FE 6 GB/ 128 GB Gray</td>
+                                    <td class="align-middle">1</td>
+                                    <td class="align-middle">01/01/2021 19:35</td>
+                                    <td class="align-middle">$538.50</td>
+                                    <td class="align-middle">$538.50</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Product list card end -->
+        </div>
+    </div>
+</div>
+

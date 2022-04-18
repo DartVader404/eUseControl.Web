@@ -1,0 +1,69 @@
+﻿@using System.Web.Optimization;
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hmart - Main Page</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Hmart-Smart Product eCommerce html Template">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/favicon.ico" />
+    <!-- CSS
+    ============================================ -->
+
+    @Styles.Render("~/bundles/bootstrap/css")
+    @Styles.Render("~/bundles/font-awesome/css")
+    @Styles.Render("~/bundles/animate/css")
+    @Styles.Render("~/bundles/icon/css")
+    @Styles.Render("~/bundles/swiper/css")
+    @Styles.Render("~/bundles/venobox/css")
+    @Styles.Render("~/bundles/main/css")
+    @Styles.Render("~/bundles/jquery-ui/css")
+
+    @if (IsSectionDefined("Styles"))
+    {@RenderSection("Styles", required: false)}
+
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <!-- Header -->
+        <header>
+            @Html.Partial("_Header")
+        </header>
+
+        <div>
+            @RenderBody()
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            @Html.Partial("_Footer")
+        </footer>
+    </div>
+    <!-- Global Vendor, plugins JS -->
+    <!-- JS Files
+    ============================================ -->
+    @Scripts.Render("~/bundles/bootstrap-bundle-min/js")
+    @Scripts.Render("~/bundles/jquery-3.6.0/js")
+    @Scripts.Render("~/bundles/jquery-migrate/js")
+    @Scripts.Render("~/bundles/modernizr/js")
+    @Scripts.Render("~/bundles/jquery-countdown/js")
+    @Scripts.Render("~/bundles/swiper/js")
+    @Scripts.Render("~/bundles/scrollUp/js")
+    @Scripts.Render("~/bundles/venobox/js")
+    @Scripts.Render("~/bundles/jquery-ui/js")
+    @Scripts.Render("~/bundles/mailchimp-ajax/js")
+    @Scripts.Render("~/bundles/main/js")
+
+    @if (IsSectionDefined("Scripts"))
+    {@RenderSection("Scripts", required: false)}
+
+</body>
+
+</html>

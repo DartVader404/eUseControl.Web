@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "_AdminHeader";
+}
+
+<!-- Header action area start -->
+<div class="header-bottom  d-none d-lg-block">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-lg-3 col">
+                <div class="header-logo">
+                    <a href="@Url.Action("Index", "Home")"><img src="~/Images/logo/logo.png" alt="Site Logo" /></a>
+                </div>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block">
+                <div class="search-element">
+                    <form action="#">
+                        <input type="text" placeholder="Search" />
+                        <button><i class="pe-7s-search"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-3 col">
+                <div class="header-actions">
+                    <!-- Single Wedge End -->
+                    <a href="@Url.Action("Logout", "Login")" class="header-action-btn header-action-btn-cart pr-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
+                            <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                        </svg>
+                    </a>
+                    <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
+                        <i class="pe-7s-menu"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header action area end -->
+<!-- Header action area start -->
+@Html.Partial("_AdminMobileMenu")
+<!-- Header action area end -->
+<!-- header navigation area start -->
+<div class="header-nav-area d-none d-lg-block sticky-nav">
+    <div class="container">
+        <div class="header-nav">
+            <div class="main-menu position-relative">
+                <ul>
+                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li><a href="@Url.Action("Stocks", "Admin")">Stocks</a></li>
+                    <li><a href="@Url.Action("NewOrders", "Admin")">New Orders</a></li>
+                    @if (ViewBag.Data != null && ViewBag.Data.Level == eUseControl.Domain.Enums.URole.Admin)
+                    {
+                        <li><a href="@Url.Action("CustomersList", "Admin")">Customers List</a></li>
+                        <li><a href="@Url.Action("OrdersHistory", "Admin")">Orders History</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- header navigation area end -->
+<div class="mobile-search-box d-lg-none">
+    <div class="container">
+        <!-- mobile search start -->
+        <div class="search-element max-width-100">
+            <form action="#">
+                <input type="text" placeholder="Search" />
+                <button><i class="pe-7s-search"></i></button>
+            </form>
+        </div>
+        <!-- mobile search start -->
+    </div>
+</div>
+
