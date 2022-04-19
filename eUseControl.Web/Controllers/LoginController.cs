@@ -79,6 +79,7 @@ namespace eUseControl.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Recover(string mail )
         {
             if (ModelState.IsValid)
@@ -96,6 +97,13 @@ namespace eUseControl.Web.Controllers
                 }
             }
             return RedirectToAction("Error", "Home");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePass(MyAccountData data)
+        {
+            return View();
         }
     }
 }

@@ -3,6 +3,8 @@
     ViewBag.Title = "MyAccount";
 }
 
+@model eUseControl.Web.Models.MyAccountData
+
 <!-- breadcrumb-area start -->
 <div class="breadcrumb-area">
     <div class="container">
@@ -90,23 +92,25 @@
                         </address>
                     </div>
                     <div class="tab-pane" id="pass_edit">
-                        <form>
+                        @using (Html.BeginForm("ChangePass", "Login", FormMethod.Post, new { autocomplete = "off" }))
+                        {
+                            @Html.AntiForgeryToken();
                             <div class="col-6">
                                 <div class="form-group" style="margin-bottom: 10px;">
                                     <label for="exampleInputEmail1">Edit password</label>
-                                    <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="current password">
+                                    @Html.PasswordFor(m => m.Password.CurrentPassword, new { @class = "form-control", placeholder = "Current password" })
                                 </div>
                                 <div class="form-group" style="margin-bottom: 10px;">
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="New password">
+                                    @Html.PasswordFor(m => m.Password.NewPassword, new { @class = "form-control", placeholder = "New password" })
                                 </div>
                                 <div class="form-group" style="margin-bottom: 10px;">
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Repeat new password">
+                                    @Html.PasswordFor(m => m.Password.RepeatPassword, new { @class = "form-control", placeholder = "Repeat new password" })
                                 </div>
                             </div>
                             <div class="col-6 d-flex justify-content-center" style="margin-bottom: 15px;">
                                 <button type="submit" class="col-3" style="border: 1px solid black; border-radius: 8%;">Save</button>
                             </div>
-                        </form>
+                        }
                     </div>
                 </div>
             </div>

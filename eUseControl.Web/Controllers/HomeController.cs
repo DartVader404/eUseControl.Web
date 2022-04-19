@@ -129,7 +129,7 @@ namespace eUseControl.Web.Controllers
             }
 
             var user = System.Web.HttpContext.Current.GetMySessionObject();
-            UserData u = new UserData
+            MyAccountData u = new MyAccountData
             {
                 UserName = user.Username,
                 Level = user.Level

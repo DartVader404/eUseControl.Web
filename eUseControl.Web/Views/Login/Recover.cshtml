@@ -30,6 +30,7 @@
                                 <div class="login-register-form">
                                     @using (Html.BeginForm("Recover", "Login", FormMethod.Post, new { autocomplete = "off" }))
                                     {
+                                        @Html.AntiForgeryToken();
                                         <div>
                                             <h3 style="text-align: center; margin-bottom: 30px;">Enter your account email</h3>
                                         </div>
