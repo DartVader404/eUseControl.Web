@@ -54,6 +54,7 @@
     <Compile Include="Entities\User\UDbTable.cs" />
     <Compile Include="Entities\User\ULoginData.cs" />
     <Compile Include="Entities\User\ULoginResp.cs" />
+    <Compile Include="Entities\User\URecoverResp.cs" />
     <Compile Include="Entities\User\URegisterData.cs" />
     <Compile Include="Entities\User\URegisterResp.cs" />
     <Compile Include="Entities\User\UserMinimal.cs" />

@@ -9,5 +9,6 @@ namespace eUseControl.BusinessLogic.Interfaces
         HttpCookie GenCookie(string loginCredential);
         URegisterResp UserRegister(URegisterData data);
         UserMinimal GetUserByCookie(string apiCookieValue);
+        URecoverResp RecoverPassword(string mail);
     }
 }

@@ -182,5 +182,40 @@ namespace eUseControl.BusinessLogic.Core
                 return userminimal;
             }
         }
+
+        internal URecoverResp RecoverPasswordAction(string mail)
+        {
+            var validate = new EmailAddressAttribute();
+            if (validate.IsValid(mail))
+            {
+                UDbTable user;
+                using (var db = new UserContext())
+                {
+                    user = db.Users.FirstOrDefault(u => u.Email == mail);
+
+                    if (user != null)
+                    {
+                        var newPassword = System.Web.Security.Membership.GeneratePassword(10, 3);
+                        string msg = "Hi, " + user.UserName + "<br/>Your new password is " + newPassword + "<br/>You can login and change it in your Account!";
+                        
+                        if (MailHelper.SendMail(mail, "kelvinbear.one@gmail.com", msg, "New Password For Your Account !!!"))
+                        {
+                            user.Password = LoginHelper.HashGen(newPassword);
+                            db.SaveChanges();
+                            return new URecoverResp() { Status = true};
+                        }
+                        return new URecoverResp() { Status = false, StatusMsg = "Error send message!" };
+                    }
+                    else
+                    {
+                        return new URecoverResp() { Status = false, StatusMsg = "User not found!" };
+                    }
+                }
+            }
+            else
+            {
+                return new URecoverResp() { Status = false, StatusMsg = "Email is not valid!" };
+            }
+        }
     }
 }

@@ -615,7 +615,7 @@
     <Content Include="Views\Home\ItemDetails.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Home\MyAccount.cshtml" />
-    <Content Include="Views\Home\Recover.cshtml" />
+    <Content Include="Views\Login\Recover.cshtml" />
     <Content Include="Views\Home\ThankYouPage.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Admin\Stocks.cshtml" />
@@ -630,6 +630,7 @@
     <Content Include="Views\Admin\CustomersList.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Home\EmailSend.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

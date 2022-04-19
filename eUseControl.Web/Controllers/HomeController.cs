@@ -137,16 +137,15 @@ namespace eUseControl.Web.Controllers
             return View(u);
         }
 
-        public ActionResult Recover()
-        {
-            return View();
-        }
-
         public ActionResult ThankYouPage()
         {
             return View();
         }
-        
+        public ActionResult EmailSend()
+        {
+            return View();
+        }
+
         public ActionResult Error()
         {
             return View();

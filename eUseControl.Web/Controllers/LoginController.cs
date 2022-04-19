@@ -67,5 +67,35 @@ namespace eUseControl.Web.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpGet]
+        public ActionResult Recover()
+        {
+            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] == "login")
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Recover(string mail )
+        {
+            if (ModelState.IsValid)
+            {
+                URecoverResp userRecover = _session.RecoverPassword(mail); 
+
+                if (userRecover.Status)
+                {
+                    return RedirectToAction("EmailSend", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", userRecover.StatusMsg);
+                    return RedirectToAction("Error", "Home");
+                }
+            }
+            return RedirectToAction("Error", "Home");
+        }
     }
 }

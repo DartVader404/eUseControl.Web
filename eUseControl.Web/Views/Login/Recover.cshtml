@@ -28,15 +28,16 @@
                         <div id="lg1" class="tab-pane active">
                             <div class="login-form-container">
                                 <div class="login-register-form">
-                                    <form action="#" method="post">
+                                    @using (Html.BeginForm("Recover", "Login", FormMethod.Post, new { autocomplete = "off" }))
+                                    {
                                         <div>
-                                            <h3 style="text-align: center; margin-bottom: 30px;">Enter your account email</h1>
+                                            <h3 style="text-align: center; margin-bottom: 30px;">Enter your account email</h3>
                                         </div>
-                                        <input type="email" name="user-name" placeholder="Email" />
+                                        <input type="email" name="mail" placeholder="Email" />
                                         <div class="button-box d-flex justify-content-center">
-                                            <button type="submit"><span>Reset Password</span></button>
+                                            <button type="submit" href="@Url.Action("Recover", "Login")"><span>Reset Password</span></button>
                                         </div>
-                                    </form>
+                                    }
                                 </div>
                             </div>
                         </div>

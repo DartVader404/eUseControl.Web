@@ -26,5 +26,10 @@ namespace eUseControl.BusinessLogic
         {
             return UserCookie(apiCookieValue);
         }
+
+        public URecoverResp RecoverPassword(string mail)
+        {
+            return RecoverPasswordAction(mail);
+        }
     }
 }

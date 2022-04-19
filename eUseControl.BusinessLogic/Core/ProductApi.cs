@@ -14,7 +14,7 @@ namespace eUseControl.BusinessLogic.Core
 {
     public class ProductApi
     {
-        public AddProductResp AddProductAction(AddProductData data)
+        internal AddProductResp AddProductAction(AddProductData data)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace eUseControl.BusinessLogic.Core
             }
         }
 
-        public List<DbProduct> GetProductsAction()
+        internal List<DbProduct> GetProductsAction()
         {
             List<DbProduct> Products;
 
@@ -76,7 +76,7 @@ namespace eUseControl.BusinessLogic.Core
             return Products;
         }
 
-        public List<ImgPath> GetImgPathsAction(int productId)
+        internal List<ImgPath> GetImgPathsAction(int productId)
         {
             //TO DO: obtain list of img path from database where row contains ProductId
             List<ImgPath> paths;
@@ -87,7 +87,7 @@ namespace eUseControl.BusinessLogic.Core
             return paths;
         }
 
-        public DbProduct GetProductByIdAction(int productId)
+        internal DbProduct GetProductByIdAction(int productId)
         {
             DbProduct product;
             using (var db = new ProductContext())
@@ -97,7 +97,7 @@ namespace eUseControl.BusinessLogic.Core
             return product;
         }
 
-        public UpdateProductResp UpdateProductAction(UpdateProductData data)
+        internal UpdateProductResp UpdateProductAction(UpdateProductData data)
         {
             if (data.PreviewImg != null)
             {
@@ -172,7 +172,7 @@ namespace eUseControl.BusinessLogic.Core
             return new UpdateProductResp() { Status = true };
         }
 
-        public DeleteProductResp DeleteProductAction(int productId)
+        internal DeleteProductResp DeleteProductAction(int productId)
         {
             DbProduct product;
 
