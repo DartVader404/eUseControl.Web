@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace eUseControl.Domain.Entities.User
 {
-    public class UChangePass
+    public class UChangePassData
     {
+        public int UserId { get; set; }
         public string CurrentPassword { get; set; }
         public string NewPassword { get; set; }
         public string RepeatPassword { get; set; }

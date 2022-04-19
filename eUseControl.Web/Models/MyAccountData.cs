@@ -14,6 +14,6 @@ namespace eUseControl.Web.Models
         public URole Level { get; set; }
         public List<Order> Orders { get; set; }
         public UAddress Address { get; set; }
-        public UChangePass Password { get; set; }
+        public UChangePassData Password { get; set; }
     }
 }

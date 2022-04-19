@@ -632,6 +632,7 @@
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Home\EmailSend.cshtml" />
+    <Content Include="Views\Home\PassChanged.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

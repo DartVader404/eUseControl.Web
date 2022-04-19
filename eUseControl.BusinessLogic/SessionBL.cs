@@ -31,5 +31,11 @@ namespace eUseControl.BusinessLogic
         {
             return RecoverPasswordAction(mail);
         }
+
+        public UChangePassResp ChangePassword(UChangePassData data)
+        {
+            return ChangePasswordAction(data);
+        }
+
     }
 }

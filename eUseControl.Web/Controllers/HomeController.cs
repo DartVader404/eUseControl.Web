@@ -129,10 +129,12 @@ namespace eUseControl.Web.Controllers
             }
 
             var user = System.Web.HttpContext.Current.GetMySessionObject();
+            var pass = new UChangePassData() { UserId = user.Id };
             MyAccountData u = new MyAccountData
             {
                 UserName = user.Username,
-                Level = user.Level
+                Level = user.Level,
+                Password = pass
             };
             return View(u);
         }
@@ -142,6 +144,11 @@ namespace eUseControl.Web.Controllers
             return View();
         }
         public ActionResult EmailSend()
+        {
+            return View();
+        }
+
+        public ActionResult PassChanged()
         {
             return View();
         }

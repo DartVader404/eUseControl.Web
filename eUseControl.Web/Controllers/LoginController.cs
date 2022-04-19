@@ -103,7 +103,21 @@ namespace eUseControl.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ChangePass(MyAccountData data)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                UChangePassResp userChangePass = _session.ChangePassword(data.Password);
+
+                if (userChangePass.Status)
+                {
+                    return RedirectToAction("PassChanged", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", userChangePass.StatusMsg);
+                    return RedirectToAction("Error", "Home");
+                }
+            }
+            return RedirectToAction("Error", "Home");
         }
     }
 }

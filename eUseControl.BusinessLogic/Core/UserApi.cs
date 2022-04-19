@@ -217,5 +217,33 @@ namespace eUseControl.BusinessLogic.Core
                 return new URecoverResp() { Status = false, StatusMsg = "Email is not valid!" };
             }
         }
+
+        internal UChangePassResp ChangePasswordAction(UChangePassData data)
+        {
+            if (data.NewPassword == data.RepeatPassword)
+            {
+                UDbTable user;
+                using (var db = new UserContext())
+                {
+                    user = db.Users.FirstOrDefault(m => m.Id == data.UserId);
+
+                    if (user == null)
+                    {
+                        return new UChangePassResp() { Status = false, StatusMsg = "User not found!" };
+                    }
+
+                    if (user.Password == data.NewPassword)
+                    {
+                        return new UChangePassResp() { Status = false, StatusMsg = "New password can't be the same as the old one!" };
+                    }
+
+                    user.Password = LoginHelper.HashGen(data.NewPassword);
+                    db.SaveChanges();
+                    return new UChangePassResp() { Status = true};
+                }
+            }
+            return new UChangePassResp() { Status = false, StatusMsg = "Passwords don't much!" };
+        }
+
     }
 }

@@ -95,6 +95,7 @@
                         @using (Html.BeginForm("ChangePass", "Login", FormMethod.Post, new { autocomplete = "off" }))
                         {
                             @Html.AntiForgeryToken();
+                            @Html.HiddenFor(m => m.Password.UserId, new { @value = Model.Password.UserId });
                             <div class="col-6">
                                 <div class="form-group" style="margin-bottom: 10px;">
                                     <label for="exampleInputEmail1">Edit password</label>

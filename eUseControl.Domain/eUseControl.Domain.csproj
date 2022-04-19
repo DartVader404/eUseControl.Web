@@ -53,7 +53,8 @@
     <Compile Include="Entities\Product\UpdateProductResp.cs" />
     <Compile Include="Entities\User\Session.cs" />
     <Compile Include="Entities\User\UAddress.cs" />
-    <Compile Include="Entities\User\UChangePass.cs" />
+    <Compile Include="Entities\User\UChangePassData.cs" />
+    <Compile Include="Entities\User\UChangePassResp.cs" />
     <Compile Include="Entities\User\UDbTable.cs" />
     <Compile Include="Entities\User\ULoginData.cs" />
     <Compile Include="Entities\User\ULoginResp.cs" />
