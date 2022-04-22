@@ -3,6 +3,8 @@
     ViewBag.Title = "ItemDetails";
 }
 
+@model eUseControl.Web.Models.ItemDetailData
+
 <!-- breadcrumb-area start -->
 <div class="breadcrumb-area">
     <div class="container">
@@ -62,17 +64,21 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="pro-details-quality d-flex justify-content-center">
-                            <div style="width: 80px;">
-                                <input class="cart-plus-minus-box" type="number" name="qtybutton" value="1" />
+                        @using (Html.BeginForm("AddToCart", "Product", FormMethod.Post, new { autocomplete = "off" }))
+                        {
+                            <div class="pro-details-quality d-flex justify-content-center">
+                                <div style="width: 80px;">
+                                    <input class="cart-plus-minus-box" type="number" name="qtybutton" value="1" />
+                                    @Html.Editor(model => model.Cart.Quantity, new { htmlAttributes = new { @class="cart-plus-minus-box", @type = "number", @value = "1" } })
+                                </div>
+                                <div class="pro-details-cart">
+                                    <button class="add-cart" type="submit">
+                                        Add To
+                                        Cart
+                                    </button>
+                                </div>
                             </div>
-                            <div class="pro-details-cart">
-                                <button class="add-cart">
-                                    Add To
-                                    Cart
-                                </button>
-                            </div>
-                        </div>
+                        }
                     </div>
                 </div>
             </div>

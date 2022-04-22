@@ -9,10 +9,12 @@ namespace eUseControl.Web.Models
 {
     public class ItemDetailData
     {
+        public int UserId { get; set; }
         public string UserName { get; set; }
         public URole Level { get; set; }
         public DbProduct Product { get; set; }
         public List<ImgPath> Paths { get; set; }
+        public NewCartProduct Cart { get; set; }
 
     }
 }

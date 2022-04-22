@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Order\DbCart.cs" />
     <Compile Include="Entities\Product\AddProductData.cs" />
     <Compile Include="Entities\Product\AddProductResp.cs" />
     <Compile Include="Entities\Product\DbProduct.cs" />

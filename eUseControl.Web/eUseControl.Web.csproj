@@ -558,6 +558,7 @@
     <Compile Include="Models\IndexData.cs" />
     <Compile Include="Models\ItemDetailData.cs" />
     <Compile Include="Models\MyAccountData.cs" />
+    <Compile Include="Models\NewCartProduct.cs" />
     <Compile Include="Models\NewProductData.cs" />
     <Compile Include="Models\ProductData.cs" />
     <Compile Include="Models\StocksData.cs" />

@@ -110,6 +110,7 @@ namespace eUseControl.Web.Controllers
 
                 ItemDetailData data = new ItemDetailData()
                 {
+                    UserId = user.Id,
                     UserName = user.Username,
                     Level = user.Level,
                     Product = product,
