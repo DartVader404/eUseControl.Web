@@ -114,7 +114,12 @@ namespace eUseControl.Web.Controllers
                     UserName = user.Username,
                     Level = user.Level,
                     Product = product,
-                    Paths = paths
+                    Paths = paths,
+                    Cart = new NewCartProduct
+                    {
+                        UserId = user.Id,
+                        ProductId = product.ProductId
+                    },
                 };
                 return View(data);
             }
