@@ -112,5 +112,11 @@ namespace eUseControl.Web.Controllers
             }
             return RedirectToAction("Error", "Home");
         }
+
+        [HttpPost]
+        public ActionResult AddToCart(ItemDetailData data)
+        {
+            return RedirectToAction("AddedToCart", "Home");
+        }
     }
 }
