@@ -237,7 +237,7 @@ namespace eUseControl.BusinessLogic.Core
             using (var db = new UserContext())
             {
                 UDbTable userData = db.Users.FirstOrDefault(m => m.Id == data.UserId);
-                if (userData != null) return new AddToCartResp { Status = false, StatusMsg="User not found!" };
+                if (userData == null) return new AddToCartResp { Status = false, StatusMsg="User not found!" };
 
                 userData.CartProducts += 1;
                 db.SaveChanges();
