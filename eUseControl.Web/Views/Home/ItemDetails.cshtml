@@ -66,10 +66,12 @@
                         </div>
                         @using (Html.BeginForm("AddToCart", "Product", FormMethod.Post, new { autocomplete = "off" }))
                         {
+                            @Html.AntiForgeryToken();
+                            @Html.HiddenFor(m => m.Cart. UserId, new { @value = Model.UserId});
+                            @Html.HiddenFor(m => m.Cart.ProductId, new { @value = Model.Product.ProductId });
                             <div class="pro-details-quality d-flex justify-content-center">
                                 <div style="width: 80px;">
-                                    <input class="cart-plus-minus-box" type="number" name="qtybutton" value="1" />
-                                    @Html.Editor(model => model.Cart.Quantity, new { htmlAttributes = new { @class="cart-plus-minus-box", @type = "number", @value = "1" } })
+                                    @Html.TextBoxFor(m => m.Cart.Quantity, new { @class = "cart-plus-minus-box", @type = "number", @Value = "1", @max = Model.Product.Quantity, @min = "0" })
                                 </div>
                                 <div class="pro-details-cart">
                                     <button class="add-cart" type="submit">
