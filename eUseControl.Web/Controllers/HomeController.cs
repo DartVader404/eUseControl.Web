@@ -40,6 +40,7 @@ namespace eUseControl.Web.Controllers
             {
                 UserName = user.Username,
                 Level = user.Level,
+                CartProducts = user.CartProducts,
                 Products = GetProduct()
             };
             return View(data);
@@ -69,7 +70,8 @@ namespace eUseControl.Web.Controllers
             UserData u = new UserData
             {
                 UserName = user.Username,
-                Level = user.Level
+                Level = user.Level,
+                CartProducts = user.CartProducts
             };
             return View(u);
         }
@@ -113,6 +115,7 @@ namespace eUseControl.Web.Controllers
                     UserId = user.Id,
                     UserName = user.Username,
                     Level = user.Level,
+                    CartProducts = user.CartProducts,
                     Product = product,
                     Paths = paths,
                     Cart = new NewCartProduct
@@ -140,6 +143,7 @@ namespace eUseControl.Web.Controllers
             {
                 UserName = user.Username,
                 Level = user.Level,
+                CartProducts = user.CartProducts,
                 Password = pass
             };
             return View(u);
