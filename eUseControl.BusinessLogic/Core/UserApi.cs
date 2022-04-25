@@ -129,6 +129,7 @@ namespace eUseControl.BusinessLogic.Core
                 var mapper = config.CreateMapper();
                 UDbTable newUser = mapper.Map<UDbTable>(data);
                 newUser.RegisterDate = DateTime.Now;
+                newUser.CartProducts = 0;
 
                 newUser.Password = LoginHelper.HashGen(newUser.Password);
 
