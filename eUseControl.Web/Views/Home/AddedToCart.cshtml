@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "AddedToCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Thank You area start -->
+<div class="thank-you-area">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-8">
+                <div class="inner_complated">
+                    <div class="img_cmpted"><img src="~/Images/icons/cart_logo.png" alt=""></div>
+                    <p class="dsc_cmpted">
+                        <h3>The product has been successfully added to the shopping cart!</h3>
+                    </p>
+                    <div class="btn_cmpted" style="margin-top: 30px;">
+                        <a href="@Url.Action("Index", "Home")" class="shop-btn" title="Go To Shop">Continue Shopping </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Thank You area end -->

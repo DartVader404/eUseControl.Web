@@ -634,6 +634,7 @@
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Home\EmailSend.cshtml" />
     <Content Include="Views\Home\PassChanged.cshtml" />
+    <Content Include="Views\Home\AddedToCart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

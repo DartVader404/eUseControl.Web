@@ -148,6 +148,10 @@ namespace eUseControl.Web.Controllers
         {
             return View();
         }
+        public ActionResult AddedToCart()
+        {
+            return View();
+        }
 
         public ActionResult PassChanged()
         {
