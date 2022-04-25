@@ -11,6 +11,7 @@ namespace eUseControl.Web.Models
     {
         public string UserName { get; set; }
         public URole Level { get; set; }
+        public int CartProducts { get; set; }
         public List<DbProduct> Products { get; set; }
         public int? SortBy { get; set; }
     }
