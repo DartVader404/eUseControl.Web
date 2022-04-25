@@ -119,7 +119,7 @@ namespace eUseControl.Web.Controllers
             if (ModelState.IsValid)
             {
 
-                AddToCartData data;
+                AddToCartData data ;
                 var AddToCartResp = _product.AddToCartProduct(data);
 
                 if (AddToCartResp.Status)
