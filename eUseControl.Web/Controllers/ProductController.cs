@@ -118,6 +118,11 @@ namespace eUseControl.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddToCart(ItemDetailData viewData)
         {
+            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             if (ModelState.IsValid)
             {
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<NewCartProduct, AddToCartData>());
