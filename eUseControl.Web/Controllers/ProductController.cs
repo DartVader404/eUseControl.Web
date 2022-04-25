@@ -115,11 +115,12 @@ namespace eUseControl.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddToCart(ItemDetailData viewData)
         {
             if (ModelState.IsValid)
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<NewCartProduct, AddToCartData>());
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<ItemDetailData, AddToCartData>());
                 var mapper = config.CreateMapper();
 
                 AddToCartData data = mapper.Map<AddToCartData>(viewData);
