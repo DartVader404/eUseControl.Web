@@ -1,4 +1,5 @@
-﻿using eUseControl.Domain.Entities.Product;
+﻿using eUseControl.Domain.Entities.Order;
+using eUseControl.Domain.Entities.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,6 @@ namespace eUseControl.BusinessLogic.Interfaces
         DbProduct GetProductById(int productId);
         UpdateProductResp UpdateProduct(UpdateProductData data);
         DeleteProductResp DeleteProduct(int productId);
+        AddToCartResp AddProductToCart(AddToCartData data);
     }
 }

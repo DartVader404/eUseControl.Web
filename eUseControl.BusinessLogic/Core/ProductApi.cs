@@ -2,6 +2,7 @@
 using eUseControl.BusinessLogic.DBModel;
 using eUseControl.Domain.Entities.Order;
 using eUseControl.Domain.Entities.Product;
+using eUseControl.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -68,11 +69,18 @@ namespace eUseControl.BusinessLogic.Core
         internal List<DbProduct> GetProductsAction()
         {
             List<DbProduct> Products;
-
-            using (var db = new ProductContext())
+            try
             {
-                Products = db.Products.ToList();
+                using (var db = new ProductContext())
+                {
+                    Products = db.Products.ToList();
+                }
             }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
 
             return Products;
         }
@@ -200,8 +208,41 @@ namespace eUseControl.BusinessLogic.Core
             return new DeleteProductResp() { Status = true};
         }
 
-        public AddToCartResp AddProductToCartAction(AddToCartData data)
+        internal AddToCartResp AddProductToCartAction(AddToCartData data)
         {
+            DbProduct productData;
+
+            using (var db = new ProductContext())
+            {
+                productData = db.Products.FirstOrDefault(m => m.ProductId == data.ProductId);
+                if (productData == null) return new AddToCartResp { Status = false, StatusMsg = "Product not found!" };
+            }
+
+            DbCart cart = new DbCart
+            {
+                UserId = data.UserId,
+                ProductId = productData.ProductId,
+                Price = productData.Price,
+                Quantity = productData.Quantity,
+                PreImgPath = productData.PreImgPath,
+                AddedDate = DateTime.Now
+            };
+
+            using (var db = new CartContext())
+            {
+                db.Cart.Add(cart);
+                db.SaveChanges();
+            }
+
+            using (var db = new UserContext())
+            {
+                UDbTable userData = db.Users.FirstOrDefault(m => m.Id == data.UserId);
+                if (userData != null) return new AddToCartResp { Status = false, StatusMsg="User not found!" };
+
+                userData.CartProducts += 1;
+                db.SaveChanges();
+            }
+
             return new AddToCartResp { Status = true };
         }
     }
