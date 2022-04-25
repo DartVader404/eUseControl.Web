@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eUseControl.BusinessLogic.Core
 {
-    public class AdminApi : BaseApi
+    public class BaseApi
     {
     }
 }

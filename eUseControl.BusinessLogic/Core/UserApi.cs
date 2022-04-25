@@ -13,7 +13,7 @@ using System.Web;
 
 namespace eUseControl.BusinessLogic.Core
 {
-    public class UserApi
+    public class UserApi : BaseApi
     {
         internal ULoginResp UserLoginAction(ULoginData data)
         {

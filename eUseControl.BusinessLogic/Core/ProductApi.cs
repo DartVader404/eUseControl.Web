@@ -12,7 +12,7 @@ using System.Web.Hosting;
 
 namespace eUseControl.BusinessLogic.Core
 {
-    public class ProductApi
+    public class ProductApi : BaseApi
     {
         internal AddProductResp AddProductAction(AddProductData data)
         {
