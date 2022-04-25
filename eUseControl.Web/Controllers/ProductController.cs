@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eUseControl.BusinessLogic.Interfaces;
+using eUseControl.Domain.Entities.Order;
 using eUseControl.Domain.Entities.Product;
 using eUseControl.Web.CustomAttributes;
 using eUseControl.Web.Models;
@@ -118,8 +119,11 @@ namespace eUseControl.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<NewCartProduct, AddToCartData>());
+                var mapper = config.CreateMapper();
 
-                AddToCartData data ;
+                AddToCartData data = mapper.Map<AddToCartData>(viewData);
+
                 var AddToCartResp = _product.AddToCartProduct(data);
 
                 if (AddToCartResp.Status)
