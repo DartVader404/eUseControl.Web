@@ -114,9 +114,25 @@ namespace eUseControl.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddToCart(ItemDetailData data)
+        public ActionResult AddToCart(ItemDetailData viewData)
         {
-            return RedirectToAction("AddedToCart", "Home");
+            if (ModelState.IsValid)
+            {
+
+                vAddToCartData data;
+                var AddToCartResp = _product.AddToCartProduct(data);
+
+                if (AddToCartResp.Status)
+                {
+                    return RedirectToAction("AddedToCart", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", AddToCartResp.StatusMsg);
+                    return RedirectToAction("Error", "Home");
+                }
+            }
+            return RedirectToAction("Error", "Home");
         }
     }
 }
