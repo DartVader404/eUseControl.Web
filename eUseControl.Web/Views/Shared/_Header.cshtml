@@ -89,7 +89,10 @@
                     {
                         <a href="@Url.Action("Cart", "Home")" class="header-action-btn header-action-btn-cart pr-0">
                             <i class="pe-7s-shopbag"></i>
-                            <span class="header-action-num">01</span>
+                            @if (@Model.CartProducts != 0)
+                            {
+                                    <span class="header-action-num">@Model.CartProducts</span>
+                            }
                         </a>
                     }
 
