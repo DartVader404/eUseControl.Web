@@ -15,7 +15,9 @@ namespace eUseControl.Domain.Entities.Order
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "ProductName")]
+        public int UserId { get; set; }
+
+        [Required]
         public int ProductId { get; set; }
 
         [Required]
