@@ -124,7 +124,7 @@ namespace eUseControl.Web.Controllers
 
                 AddToCartData data = mapper.Map<AddToCartData>(viewData);
 
-                var AddToCartResp = _product.AddToCartProduct(data);
+                var AddToCartResp = _product.AddProductToCart(data);
 
                 if (AddToCartResp.Status)
                 {

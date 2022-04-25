@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eUseControl.BusinessLogic.DBModel;
+using eUseControl.Domain.Entities.Order;
 using eUseControl.Domain.Entities.Product;
 using System;
 using System.Collections.Generic;
@@ -197,6 +198,11 @@ namespace eUseControl.BusinessLogic.Core
             }
 
             return new DeleteProductResp() { Status = true};
+        }
+
+        public AddToCartResp AddProductToCartAction(AddToCartData data)
+        {
+            return new AddToCartResp { Status = true };
         }
     }
 }

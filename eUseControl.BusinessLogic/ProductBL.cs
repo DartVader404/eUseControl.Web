@@ -1,5 +1,6 @@
 ﻿using eUseControl.BusinessLogic.Core;
 using eUseControl.BusinessLogic.Interfaces;
+using eUseControl.Domain.Entities.Order;
 using eUseControl.Domain.Entities.Product;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,11 @@ namespace eUseControl.BusinessLogic
         public DeleteProductResp DeleteProduct(int productId)
         {
             return DeleteProductAction(productId);
+        }
+
+        public AddToCartResp AddProductToCart(AddToCartData data)
+        {
+            return AddProductToCartAction(data);
         }
     }
 }
