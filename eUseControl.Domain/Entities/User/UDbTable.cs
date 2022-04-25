@@ -36,5 +36,7 @@ namespace eUseControl.Domain.Entities.User
         public string LasIp { get; set; }
 
         public URole Level { get; set; }
+
+        public int CartProducts { get; set; } //count user products in the cart 
     }
 }
