@@ -554,6 +554,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartPageData.cs" />
     <Compile Include="Models\EditProductData.cs" />
     <Compile Include="Models\IndexData.cs" />
     <Compile Include="Models\ItemDetailData.cs" />
