@@ -84,7 +84,7 @@ namespace eUseControl.Web.Controllers
 
             List<CartProducts> minCart = mapper.Map<List<CartProducts>>(cart);
 
-            foreach (var c in minCart)
+            foreach (var c in minCart)                  //some logic to get max product quantity when user change number of products in cart
             {
                 product = _product.GetProductById(c.ProductId);
                 c.maxQuantity = product.Quantity;
