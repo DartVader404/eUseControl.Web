@@ -61,7 +61,7 @@
                                         }
                                         <td class="product-subtotal">$@subtotal</td>
                                         <td class="product-remove">
-                                            <a href="#"><i class="fa fa-times"></i></a>
+                                            <a href="@Url.Action("RemoveFromCart", "Product", new { cartId = product.Id})"><i class="fa fa-times"></i></a>
                                         </td>
                                     </tr>
                                 }
