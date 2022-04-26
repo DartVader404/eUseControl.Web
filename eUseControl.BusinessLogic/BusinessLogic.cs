@@ -13,5 +13,10 @@ namespace eUseControl.BusinessLogic
         {
             return new ProductBL();
         }
+
+        public IOrder GetOrderBL()
+        {
+            return new OrderBL();
+        }
     }
 }

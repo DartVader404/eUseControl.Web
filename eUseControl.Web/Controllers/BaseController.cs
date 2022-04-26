@@ -2,6 +2,7 @@
 using eUseControl.BusinessLogic.Interfaces;
 using eUseControl.Domain.Entities.Order;
 using eUseControl.Domain.Entities.Product;
+using eUseControl.Domain.Entities.User;
 using eUseControl.Web.Extension;
 using eUseControl.Web.Models;
 using System;
@@ -17,11 +18,13 @@ namespace eUseControl.Web.Controllers
     {
         private readonly ISession _session;
         private readonly IProduct _product;
+        private readonly IOrder _order;
         public BaseController()
         {
             var bl = new BusinessLogic.BusinessLogic();
             _session = bl.GetSessionBL();
             _product = bl.GetProductBL();
+            _order = bl.GetOrderBL();
         }
 
         public void SessionStatus()
@@ -91,6 +94,34 @@ namespace eUseControl.Web.Controllers
             }
 
             return (minCart);
+        }
+
+        public ShipingAddress GetUserAddress(int userId)
+        {
+            UAddress address = _order.GetAddress(userId);
+            ShipingAddress minAddress = null;
+
+            if (address != null)
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<UAddress, ShipingAddress>());
+                var mapper = config.CreateMapper();
+
+                minAddress = mapper.Map<ShipingAddress>(address);
+            }
+
+            return minAddress;
+        }
+
+        public List<NewOrder> OrderFromCart(int userId)
+        {
+            List<DbCart> cart = _product.GetProductsInCart(userId);
+
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<DbCart, NewOrder>());
+            var mapper = config.CreateMapper();
+
+            List<NewOrder> minOrder = mapper.Map<List<NewOrder>>(cart);
+
+            return minOrder;
         }
     }
 }

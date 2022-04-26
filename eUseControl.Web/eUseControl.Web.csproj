@@ -546,6 +546,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="CustomAttributes\AdminModAttribute.cs" />
@@ -556,13 +557,16 @@
     </Compile>
     <Compile Include="Models\CartPageData.cs" />
     <Compile Include="Models\CartProducts.cs" />
+    <Compile Include="Models\CheckoutData.cs" />
     <Compile Include="Models\EditProductData.cs" />
     <Compile Include="Models\IndexData.cs" />
     <Compile Include="Models\ItemDetailData.cs" />
     <Compile Include="Models\MyAccountData.cs" />
     <Compile Include="Models\NewCartProduct.cs" />
+    <Compile Include="Models\NewOrder.cs" />
     <Compile Include="Models\NewProductData.cs" />
     <Compile Include="Models\ProductData.cs" />
+    <Compile Include="Models\ShipingAddress.cs" />
     <Compile Include="Models\StocksData.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\UserRegister.cs" />
@@ -647,6 +651,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

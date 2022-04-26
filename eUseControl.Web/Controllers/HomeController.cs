@@ -85,7 +85,25 @@ namespace eUseControl.Web.Controllers
 
         public ActionResult Checkout()
         {
-            return View();
+            SessionStatus();
+            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            var user = System.Web.HttpContext.Current.GetMySessionObject();
+            CheckoutData u = new CheckoutData
+            {
+                UserId = user.Id,
+                UserName = user.Username,
+                Level = user.Level,
+                CartProducts = user.CartProducts,
+                Products = ProductsInCart(user.Id),
+                Address = GetUserAddress(user.Id),
+                OrderList = OrderFromCart(user.Id)
+            };
+
+            return View(u);
         }
 
         public ActionResult EditAddress()
