@@ -71,6 +71,7 @@ namespace eUseControl.Web.Controllers
             var user = System.Web.HttpContext.Current.GetMySessionObject();
             CartPageData u = new CartPageData
             {
+                UserId = user.Id,
                 UserName = user.Username,
                 Level = user.Level,
                 CartProducts = user.CartProducts,

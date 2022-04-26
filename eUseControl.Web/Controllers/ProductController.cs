@@ -144,5 +144,20 @@ namespace eUseControl.Web.Controllers
             }
             return RedirectToAction("Error", "Home");
         }
+
+        public ActionResult RemoveFromCart(string cartId)
+        {
+            var RemoveCartResp = _product.RemoveCartElement(Int32.Parse(cartId));
+
+            if (RemoveCartResp.Status)
+            {
+                return RedirectToAction("Cart", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("", RemoveCartResp.StatusMsg);
+                return RedirectToAction("Error", "Home");
+            }
+        }
     }
 }
