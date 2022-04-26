@@ -249,7 +249,14 @@ namespace eUseControl.BusinessLogic.Core
 
         internal List<DbCart> GetProductsInCartAction(int userId)
         {
-            return new List<DbCart>() { };
+            List <DbCart> cart;
+
+            using (var db = new CartContext())
+            {
+                cart = db.Cart.Where(m => m.UserId == userId).ToList();
+            }
+
+            return cart;
         }
     }
 }
