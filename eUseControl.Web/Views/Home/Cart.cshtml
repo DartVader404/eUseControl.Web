@@ -52,7 +52,7 @@
                                         <td class="product-price-cart"><span class="amount">$@product.Price</span></td>
                                         <td class="product-quantity">
                                             <div style="width: 80px; margin: auto;">
-                                                <input class="cart-plus-minus-box" type="number" name="qtybutton" value="@product.Quantity" />
+                                                <input class="cart-plus-minus-box" type="number" name="qtybutton" value="@product.Quantity" max="@product.maxQuantity" />
                                             </div>
                                         </td>
                                         @{ 
