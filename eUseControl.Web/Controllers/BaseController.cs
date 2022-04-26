@@ -77,7 +77,7 @@ namespace eUseControl.Web.Controllers
         {
             List<DbCart> cart = _product.GetProductsInCart(userId);
 
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<List<DbCart>, List<CartProducts>>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<DbCart, CartProducts>());
             var mapper = config.CreateMapper();
 
             List<CartProducts> minCart = mapper.Map<List<CartProducts>>(cart);
