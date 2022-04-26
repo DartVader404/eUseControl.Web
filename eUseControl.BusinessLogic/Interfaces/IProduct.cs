@@ -17,5 +17,6 @@ namespace eUseControl.BusinessLogic.Interfaces
         UpdateProductResp UpdateProduct(UpdateProductData data);
         DeleteProductResp DeleteProduct(int productId);
         AddToCartResp AddProductToCart(AddToCartData data);
+        List<DbCart> GetProductsInCart(int userId);
     }
 }

@@ -246,5 +246,10 @@ namespace eUseControl.BusinessLogic.Core
 
             return new AddToCartResp { Status = true };
         }
+
+        internal List<DbCart> GetProductsInCartAction(int userId)
+        {
+            return new List<DbCart>() { };
+        }
     }
 }

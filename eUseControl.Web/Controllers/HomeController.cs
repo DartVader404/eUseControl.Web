@@ -74,7 +74,7 @@ namespace eUseControl.Web.Controllers
                 UserName = user.Username,
                 Level = user.Level,
                 CartProducts = user.CartProducts,
-                Products = _product.GetProductsInCart(user.Id)
+                Products = ProductsInCart(user.Id)
             };
 
             if (u.Products == null) RedirectToAction("EmptyCart", "Home");

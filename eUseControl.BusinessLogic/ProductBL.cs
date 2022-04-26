@@ -46,5 +46,10 @@ namespace eUseControl.BusinessLogic
         {
             return AddProductToCartAction(data);
         }
+
+        public List<DbCart> GetProductsInCart(int userId)
+        {
+            return GetProductsInCartAction(userId);
+        }
     }
 }
