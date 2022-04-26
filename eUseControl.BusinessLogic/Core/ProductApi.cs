@@ -224,7 +224,7 @@ namespace eUseControl.BusinessLogic.Core
                 ProductId = productData.ProductId,
                 ProductName = productData.ProductName,
                 Price = productData.Price,
-                Quantity = productData.Quantity,
+                Quantity = data.Quantity,
                 PreImgPath = productData.PreImgPath,
                 AddedDate = DateTime.Now
             };
