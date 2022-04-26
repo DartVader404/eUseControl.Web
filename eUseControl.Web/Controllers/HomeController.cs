@@ -15,10 +15,12 @@ namespace eUseControl.Web.Controllers
     {
         // GET: Home
         private readonly ISession _session;
+        private readonly IProduct _product;
         public HomeController()
         {
             var bl = new BusinessLogic.BusinessLogic();
             _session = bl.GetSessionBL();
+            _product = bl.GetProductBL();
         }
 
 
@@ -71,8 +73,12 @@ namespace eUseControl.Web.Controllers
             {
                 UserName = user.Username,
                 Level = user.Level,
-                CartProducts = user.CartProducts
+                CartProducts = user.CartProducts,
+                Products = _product.GetProductsInCart(user.Id)
             };
+
+            if (u.Products == null) RedirectToAction("EmptyCart", "Home");
+
             return View(u);
         }
 
