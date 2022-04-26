@@ -77,7 +77,7 @@ namespace eUseControl.Web.Controllers
                 Products = ProductsInCart(user.Id)
             };
 
-            if (u.Products == null) RedirectToAction("EmptyCart", "Home");
+            if (!u.Products.Any()) return RedirectToAction("EmptyCart", "Home");
 
             return View(u);
         }
