@@ -80,7 +80,15 @@ namespace eUseControl.Web.Controllers
             var config = new MapperConfiguration(cfg => cfg.CreateMap<DbCart, CartProducts>());
             var mapper = config.CreateMapper();
 
+            DbProduct product;
+
             List<CartProducts> minCart = mapper.Map<List<CartProducts>>(cart);
+
+            foreach (var c in minCart)
+            {
+                product = _product.GetProductById(c.ProductId);
+                c.maxQuantity = product.Quantity;
+            }
 
             return (minCart);
         }
