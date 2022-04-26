@@ -94,6 +94,22 @@ namespace eUseControl.Web.Controllers
 
         public ActionResult EmptyCart()
         {
+            SessionStatus();
+            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            var user = System.Web.HttpContext.Current.GetMySessionObject();
+            CartPageData u = new CartPageData
+            {
+                UserName = user.Username,
+                Level = user.Level,
+                CartProducts = user.CartProducts,
+                Products = ProductsInCart(user.Id)
+            };
+
+            if (u.Products.Any()) return RedirectToAction("Cart", "Home");
             return View();
         }
 
