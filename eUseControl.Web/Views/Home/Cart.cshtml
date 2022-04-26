@@ -38,54 +38,36 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="product-thumbnail">
-                                        <a href="#"><img class="img-responsive ml-15px" src="~/Images/product-image/item1.webp" alt="" /></a>
-                                    </td>
-                                    <td class="product-name"><a href="#">Apple MacBook Air 13 (2020) Space Gray</a></td>
-                                    <td class="product-price-cart"><span class="amount">$1238.50</span></td>
-                                    <td class="product-quantity">
-                                        <div style="width: 80px; margin: auto;">
-                                            <input class="cart-plus-minus-box" type="number" name="qtybutton" value="1" />
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal">$1238.50</td>
-                                    <td class="product-remove">
-                                        <a href="#"><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="product-thumbnail">
-                                        <a href="#"><img class="img-responsive ml-15px" src="~/Images/product-image/item2.webp" alt="" /></a>
-                                    </td>
-                                    <td class="product-name"><a href="#">Wireless On-Ear JBL T500BT <br> Black</a></td>
-                                    <td class="product-price-cart"><span class="amount">$138.00</span></td>
-                                    <td class="product-quantity">
-                                        <div style="width: 80px; margin: auto;">
-                                            <input class="cart-plus-minus-box" type="number" name="qtybutton" value="1" />
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal">$138.00</td>
-                                    <td class="product-remove">
-                                        <a href="#"><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="product-thumbnail">
-                                        <a href="#"><img class="img-responsive ml-15px" src="~/Images/product-image/item3.webp" alt="" /></a>
-                                    </td>
-                                    <td class="product-name"><a href="#">Samsung Galaxy S21 FE 6 GB/ 128 GB Gray</a></td>
-                                    <td class="product-price-cart"><span class="amount">$538.50</span></td>
-                                    <td class="product-quantity">
-                                        <div style="width: 80px; margin: auto;">
-                                            <input class="cart-plus-minus-box" type="number" name="qtybutton" value="1" />
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal">$538.50</td>
-                                    <td class="product-remove">
-                                        <a href="#"><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
+                                @{ 
+                                    double total = 0;
+                                    double grandtotal;
+                                }
+                                @foreach (var product in Model.Products)
+                                {
+                                    <tr>
+                                        <td class="product-thumbnail d-flex justify-content-around">
+                                            <a href="#"><img class="img-responsive" src=@product.PreImgPath alt="" width="80", height="80"/></a>
+                                        </td>
+                                        <td class="product-name"><a href="#">@product.ProductName</a></td>
+                                        <td class="product-price-cart"><span class="amount">$@product.Price</span></td>
+                                        <td class="product-quantity">
+                                            <div style="width: 80px; margin: auto;">
+                                                <input class="cart-plus-minus-box" type="number" name="qtybutton" value="@product.Quantity" />
+                                            </div>
+                                        </td>
+                                        @{ 
+                                            double subtotal= product.Quantity * product.Price;
+                                            total += subtotal;
+                                        }
+                                        <td class="product-subtotal">$@subtotal</td>
+                                        <td class="product-remove">
+                                            <a href="#"><i class="fa fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                                @{ 
+                                    grandtotal = total + 30;
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -109,11 +91,11 @@
                             <div class="title-wrap">
                                 <h4 class="cart-bottom-title section-bg-gary-cart">Cart Total</h4>
                             </div>
-                            <h5>Total products <span>$1915.00</span></h5>
+                            <h5>Total products <span>$@total</span></h5>
                             <div class="total-shipping">
-                                <h5>Total shipping<span>$30.00</span></h5>
+                                <h5>Total shipping<span>$30</span></h5>
                             </div>
-                            <h4 class="grand-totall-title">Grand Total <span>$1945.00</span></h4>
+                            <h4 class="grand-totall-title">Grand Total <span>$@grandtotal</span></h4>
                             <a href="@Url.Action("Checkout", "Home")">Proceed to Checkout</a>
                         </div>
                     </div>
