@@ -339,8 +339,16 @@ namespace eUseControl.BusinessLogic.Core
                     {
                         return new UpdateCartQtyResp() { Status = false, StatusMsg = "Element not found!" };
                     }
-                    cart.Quantity = item.Quantity;
-                    db.SaveChanges();
+
+                    if (item.Quantity == 0)
+                    {
+                        RemoveCartElementAction(item.Id);
+                    }
+                    else
+                    {
+                        cart.Quantity = item.Quantity;
+                        db.SaveChanges();
+                    }
                 }
             }
 
