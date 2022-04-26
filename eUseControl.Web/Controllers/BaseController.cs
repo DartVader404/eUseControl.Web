@@ -1,6 +1,9 @@
-﻿using eUseControl.BusinessLogic.Interfaces;
+﻿using AutoMapper;
+using eUseControl.BusinessLogic.Interfaces;
+using eUseControl.Domain.Entities.Order;
 using eUseControl.Domain.Entities.Product;
 using eUseControl.Web.Extension;
+using eUseControl.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,6 +71,18 @@ namespace eUseControl.Web.Controllers
         {
             DbProduct product = _product.GetProductById(productId);
             return product;
+        }
+
+        public List<CartProducts> ProductsInCart(int userId)
+        {
+            List<DbCart> cart = _product.GetProductsInCart(userId);
+
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<List<DbCart>, List<CartProducts>>());
+            var mapper = config.CreateMapper();
+
+            List<CartProducts> minCart = mapper.Map<List<CartProducts>>(cart);
+
+            return (minCart);
         }
     }
 }
