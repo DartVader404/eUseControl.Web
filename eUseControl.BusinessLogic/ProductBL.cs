@@ -51,5 +51,21 @@ namespace eUseControl.BusinessLogic
         {
             return GetProductsInCartAction(userId);
         }
+
+        public RemoveCartResp RemoveCartElement(int cartId)
+        {
+            return RemoveCartElementAction(cartId);
+        }
+        
+        public RemoveCartResp RemoveAllCartElement(int userId)
+        {
+            return RemoveAllCartElementAction(userId);
+        }
+
+        public UpdateCartQtyResp UpdateCartQty(List<UpdateCartQtyData> data)
+        {
+            return  UpdateCartQtyAction(data);
+        }
+
     }
 }

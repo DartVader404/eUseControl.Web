@@ -258,5 +258,95 @@ namespace eUseControl.BusinessLogic.Core
 
             return cart;
         }
+
+        internal RemoveCartResp RemoveCartElementAction(int cartId)
+        {
+            int userId;
+            using (var db = new CartContext())
+            {
+                DbCart cart = db.Cart.FirstOrDefault(m => m.Id == cartId);
+                if (cart == null)
+                {
+                    return new RemoveCartResp() { Status = false, StatusMsg = "Element not found!" };
+                }
+
+                userId = cart.UserId;
+
+                db.Cart.Remove(cart);
+                db.SaveChanges();
+            }
+
+            using (var db = new UserContext())
+            {
+                UDbTable user = db.Users.FirstOrDefault(m => m.Id == userId);
+                if (user == null)
+                {
+                    return new RemoveCartResp() { Status = false, StatusMsg = "User not found!" };
+                }
+
+                user.CartProducts -= 1;             //update number of products in the cart for display in the header of the page
+
+                db.SaveChanges();
+            }
+
+            return new RemoveCartResp() { Status = true };
+        }
+
+        internal RemoveCartResp RemoveAllCartElementAction(int userId)
+        {
+            using (var db = new CartContext())
+            {
+                List<DbCart> carts = db.Cart.Where(m => m.UserId == userId).ToList();
+                if (!carts.Any())
+                {
+                    return new RemoveCartResp() { Status = false, StatusMsg = "Element not found!" };
+                }
+
+                foreach(var cart in carts)
+                {
+                    db.Cart.Remove(cart);
+                }
+
+                db.SaveChanges();
+            }
+
+            using (var db = new UserContext())
+            {
+                var user = db.Users.FirstOrDefault(m => m.Id == userId);
+                if (user == null)
+                {
+                    return new RemoveCartResp() { Status = false, StatusMsg = "User not found!" };
+                }
+
+                user.CartProducts = 0;
+
+                db.SaveChanges();
+            }
+
+            return new RemoveCartResp() { Status = true };
+        }
+
+        internal UpdateCartQtyResp UpdateCartQtyAction(List<UpdateCartQtyData> data)
+        {
+            //update qty code
+            DbCart cart;
+            foreach (var item in data)
+            {
+                using (var db = new CartContext())
+                {
+                    cart = db.Cart.FirstOrDefault(m => m.Id == item.Id);
+                    if (cart == null)
+                    {
+                        return new UpdateCartQtyResp() { Status = false, StatusMsg = "Element not found!" };
+                    }
+                    cart.Quantity = item.Quantity;
+                    db.SaveChanges();
+                }
+            }
+
+            return new UpdateCartQtyResp() { Status = true };
+        }
+
+
     }
 }

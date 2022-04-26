@@ -46,6 +46,9 @@
     <Compile Include="Entities\Order\AddToCartData.cs" />
     <Compile Include="Entities\Order\AddToCartResp.cs" />
     <Compile Include="Entities\Order\DbCart.cs" />
+    <Compile Include="Entities\Order\RemoveCartResp.cs" />
+    <Compile Include="Entities\Order\UpdateCartQtyData.cs" />
+    <Compile Include="Entities\Order\UpdateCartQtyResp.cs" />
     <Compile Include="Entities\Product\AddProductData.cs" />
     <Compile Include="Entities\Product\AddProductResp.cs" />
     <Compile Include="Entities\Product\DbProduct.cs" />

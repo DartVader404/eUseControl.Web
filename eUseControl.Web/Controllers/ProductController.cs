@@ -147,15 +147,50 @@ namespace eUseControl.Web.Controllers
 
         public ActionResult RemoveFromCart(string cartId)
         {
-            var RemoveCartResp = _product.RemoveCartElement(Int32.Parse(cartId));
+            RemoveCartResp remove= _product.RemoveCartElement(Int32.Parse(cartId));
 
-            if (RemoveCartResp.Status)
+            if (remove.Status)
             {
                 return RedirectToAction("Cart", "Home");
             }
             else
             {
-                ModelState.AddModelError("", RemoveCartResp.StatusMsg);
+                ModelState.AddModelError("", remove.StatusMsg);
+                return RedirectToAction("Error", "Home");
+            }
+        }
+
+        public ActionResult RemoveAllFromCart(string userId)
+        {
+            RemoveCartResp remove = _product.RemoveAllCartElement(Int32.Parse(userId));
+
+            if (remove.Status)
+            {
+                return RedirectToAction("Cart", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("", remove.StatusMsg);
+                return RedirectToAction("Error", "Home");
+            }
+        }
+
+        public ActionResult UpdateCartQty(CartPageData viewData)
+        {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<CartProducts, UpdateCartQtyData>());
+            var mapper = config.CreateMapper();
+
+            List<UpdateCartQtyData> data = mapper.Map<List<UpdateCartQtyData>>(viewData.Products);
+
+            UpdateCartQtyResp update = _product.UpdateCartQty(data);
+
+            if (update.Status)
+            {
+                return RedirectToAction("Cart", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("", update.StatusMsg);
                 return RedirectToAction("Error", "Home");
             }
         }
