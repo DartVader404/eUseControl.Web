@@ -222,6 +222,7 @@ namespace eUseControl.BusinessLogic.Core
             {
                 UserId = data.UserId,
                 ProductId = productData.ProductId,
+                ProductName = productData.ProductName,
                 Price = productData.Price,
                 Quantity = productData.Quantity,
                 PreImgPath = productData.PreImgPath,

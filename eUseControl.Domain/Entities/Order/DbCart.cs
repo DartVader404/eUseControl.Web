@@ -21,6 +21,10 @@ namespace eUseControl.Domain.Entities.Order
         public int ProductId { get; set; }
 
         [Required]
+        [Display(Name = "ProductName")]
+        public string ProductName { get; set; }
+
+        [Required]
         [Display(Name = "Price")]
         public double Price { get; set; }
 
