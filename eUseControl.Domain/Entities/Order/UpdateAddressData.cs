@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace eUseControl.Domain.Entities.Order
 {
-    public class NewAddress
+    public class UpdateAddressData
     {
         public int UserId { get; set; }
+        public int AddressId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Country { get; set; }

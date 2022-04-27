@@ -26,5 +26,11 @@ namespace eUseControl.BusinessLogic
         {
             return PlaceOrderAction(data);
         }
+
+        public UpdateAddressResp UpdateUserAddress(UpdateAddressData data)
+        {
+            return UpdateUserAddressAction(data);
+        }
+
     }
 }

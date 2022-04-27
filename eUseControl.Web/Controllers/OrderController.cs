@@ -33,7 +33,6 @@ namespace eUseControl.Web.Controllers
                 var mapper = config.CreateMapper();
 
                 NewAddress newAddress = mapper.Map<NewAddress>(viewData.Address);
-                newAddress.AddedDate = DateTime.Now;
                 newAddress.UserId = viewData.UserId;
 
                 addressId = _order.AddUserAddress(newAddress);
@@ -110,6 +109,51 @@ namespace eUseControl.Web.Controllers
                 CartProducts = user.CartProducts,
             };
             return View(u);
+        }
+
+        public ActionResult EditAddress()
+        {
+            SessionStatus();
+            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            var user = System.Web.HttpContext.Current.GetMySessionObject();
+
+            MyAccountData u = new MyAccountData
+            {
+                UserName = user.Username,
+                Level = user.Level,
+                CartProducts = user.CartProducts,
+                Address = GetUserAddress(user.Id)
+            };
+            
+            return View(u);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditAddress(MyAccountData viewData)
+        {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<ShipingAddress, UpdateAddressData>());
+            var mapper = config.CreateMapper();
+
+            UpdateAddressData address = mapper.Map<UpdateAddressData>(viewData.Address);
+
+            UpdateAddressResp update = _order.UpdateUserAddress(address);
+
+
+            if (update.Status)
+            {
+                return RedirectToAction("MyAccount", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("", update.StatusMsg);
+                return RedirectToAction("Error", "Home");
+            }
+
         }
     }
 }

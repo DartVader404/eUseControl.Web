@@ -13,5 +13,6 @@ namespace eUseControl.BusinessLogic.Interfaces
         DbAddress GetAddress(int userId);
         int AddUserAddress(NewAddress address);
         PlaceOrderResp PlaceOrder(List<PlaceOrderData> data);
+        UpdateAddressResp UpdateUserAddress(UpdateAddressData data);
     }
 }

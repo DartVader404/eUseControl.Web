@@ -3,6 +3,7 @@ using eUseControl.BusinessLogic.Interfaces;
 using eUseControl.Domain.Entities.Order;
 using eUseControl.Domain.Entities.Product;
 using eUseControl.Web.CustomAttributes;
+using eUseControl.Web.Extension;
 using eUseControl.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -147,7 +148,21 @@ namespace eUseControl.Web.Controllers
 
         public ActionResult AddedToCart()
         {
-            return View();
+            SessionStatus();
+            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+            {
+                return View();
+            }
+
+            var user = System.Web.HttpContext.Current.GetMySessionObject();
+            UserData u = new UserData
+            {
+                UserName = user.Username,
+                Level = user.Level,
+                CartProducts = user.CartProducts
+            };
+
+            return View(u);
         }
 
         public ActionResult RemoveFromCart(string cartId)
@@ -198,6 +213,25 @@ namespace eUseControl.Web.Controllers
                 ModelState.AddModelError("", update.StatusMsg);
                 return RedirectToAction("Error", "Home");
             }
+        }
+
+        public ActionResult EmptyCart()
+        {
+            SessionStatus();
+            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+            {
+                return View();
+            }
+
+            var user = System.Web.HttpContext.Current.GetMySessionObject();
+            UserData u = new UserData
+            {
+                UserName = user.Username,
+                Level = user.Level,
+                CartProducts = user.CartProducts
+            };
+
+            return View(u);
         }
     }
 }

@@ -57,5 +57,8 @@ namespace eUseControl.Domain.Entities.User
         [DataType(DataType.Date)]
         public DateTime AddedDate { get; set; }
 
+        [DataType(DataType.Date)]
+        public DateTime LastEdit { get; set; }
+
     }
 }

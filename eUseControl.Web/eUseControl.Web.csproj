@@ -618,8 +618,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Cart.cshtml" />
     <Content Include="Views\Home\Checkout.cshtml" />
-    <Content Include="Views\Home\EditAddress.cshtml" />
-    <Content Include="Views\Home\EmptyCart.cshtml" />
+    <Content Include="Views\Order\EditAddress.cshtml" />
+    <Content Include="Views\Product\EmptyCart.cshtml" />
     <Content Include="Views\Home\ItemDetails.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Home\MyAccount.cshtml" />

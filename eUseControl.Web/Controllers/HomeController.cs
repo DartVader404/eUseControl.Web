@@ -48,8 +48,6 @@ namespace eUseControl.Web.Controllers
             return View(data);
         }
 
-       
-
         public ActionResult About()
         {
             return View();
@@ -78,7 +76,7 @@ namespace eUseControl.Web.Controllers
                 Products = ProductsInCart(user.Id)
             };
 
-            if (!u.Products.Any()) return RedirectToAction("EmptyCart", "Home");
+            if (!u.Products.Any()) return RedirectToAction("EmptyCart", "Product");
 
             return View(u);
         }
@@ -105,33 +103,7 @@ namespace eUseControl.Web.Controllers
 
             return View(u);
         }
-
-        public ActionResult EditAddress()
-        {
-            return View();
-        }
-
-        public ActionResult EmptyCart()
-        {
-            SessionStatus();
-            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
-            {
-                return RedirectToAction("Index", "Login");
-            }
-
-            var user = System.Web.HttpContext.Current.GetMySessionObject();
-            CartPageData u = new CartPageData
-            {
-                UserName = user.Username,
-                Level = user.Level,
-                CartProducts = user.CartProducts,
-                Products = ProductsInCart(user.Id)
-            };
-
-            if (u.Products.Any()) return RedirectToAction("Cart", "Home");
-            return View();
-        }
-
+        
         public ActionResult ItemDetails(string productId)
         {
             if (productId != null)
@@ -185,7 +157,9 @@ namespace eUseControl.Web.Controllers
                 UserName = user.Username,
                 Level = user.Level,
                 CartProducts = user.CartProducts,
-                Password = pass
+                Password = pass,
+                Address = GetUserAddress(user.Id)
+                //Orders = GetUserOrders(user.Id)
             };
             return View(u);
         }

@@ -31,6 +31,9 @@ namespace eUseControl.BusinessLogic.Core
             var mapper = config.CreateMapper();
             DbAddress newAddress = mapper.Map<DbAddress>(address);
 
+            newAddress.AddedDate = DateTime.Now;
+            newAddress.LastEdit = DateTime.Now;
+
             using (var db = new AddressContext())
             {
                 db.Addresses.Add(newAddress);
@@ -93,6 +96,34 @@ namespace eUseControl.BusinessLogic.Core
 
             return resp;
         }
+
+        internal UpdateAddressResp UpdateUserAddressAction(UpdateAddressData data)
+        {
+            using (var db = new AddressContext())
+            {
+                DbAddress address = db.Addresses.FirstOrDefault(m => m.AddressId == data.AddressId);
+                if (address == null)
+                {
+                    return new UpdateAddressResp() { Status = false, StatusMsg = "AddressID not found!"};
+                }
+
+                address.FirstName = data.FirstName;
+                address.LastName = data.LastName;
+                address.Email = data.Email;
+                address.City = data.City;
+                address.State = data.State;
+                address.StreetAddress = data.StreetAddress;
+                address.PostCode = data.PostCode;
+                address.Country = data.Country;
+                address.Phone = data.Phone;
+                address.LastEdit = DateTime.Now;
+
+                db.SaveChanges();
+            }
+
+            return new UpdateAddressResp() { Status = true };
+        }
+
 
     }
 }

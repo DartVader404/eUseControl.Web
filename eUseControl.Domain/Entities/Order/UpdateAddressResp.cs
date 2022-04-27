@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace eUseControl.Domain.Entities.Order
 {
-    public class UpdateCartQtyData
+    public class UpdateAddressResp
     {
-        public int CartId { get; set; }
-        public int Quantity { get; set; }
+        public bool Status { get; set; }
+        public string StatusMsg { get; set; }
     }
 }

@@ -301,7 +301,7 @@ namespace eUseControl.BusinessLogic.Core
             {
                 using (var db = new CartContext())
                 {
-                    cart = db.Cart.FirstOrDefault(m => m.CartId == item.Id);
+                    cart = db.Cart.FirstOrDefault(m => m.CartId == item.CartId);
                     if (cart == null)
                     {
                         return new UpdateCartQtyResp() { Status = false, StatusMsg = "Element not found!" };
@@ -309,7 +309,7 @@ namespace eUseControl.BusinessLogic.Core
 
                     if (item.Quantity == 0)
                     {
-                        RemoveCartElementAction(item.Id);
+                        RemoveCartElementAction(item.CartId);
                     }
                     else
                     {

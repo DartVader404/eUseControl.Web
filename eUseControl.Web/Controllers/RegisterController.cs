@@ -38,6 +38,12 @@ namespace eUseControl.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (register.Password != register.RepeatPassword)
+                {
+                    ModelState.AddModelError("", "Passwords not match!");
+                    return View();
+                }
+
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<UserRegister, URegisterData>());
                 var mapper = config.CreateMapper();
 
