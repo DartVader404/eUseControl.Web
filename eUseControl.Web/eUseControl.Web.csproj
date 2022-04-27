@@ -624,7 +624,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Home\MyAccount.cshtml" />
     <Content Include="Views\Login\Recover.cshtml" />
-    <Content Include="Views\Home\ThankYouPage.cshtml" />
+    <Content Include="Views\Order\ThankYouPage.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Admin\Stocks.cshtml" />
     <Content Include="Vendor\fonts\icofont.eot" />
@@ -639,8 +639,9 @@
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Home\EmailSend.cshtml" />
-    <Content Include="Views\Home\PassChanged.cshtml" />
-    <Content Include="Views\Home\AddedToCart.cshtml" />
+    <Content Include="Views\Login\PassChanged.cshtml" />
+    <Content Include="Views\Product\AddedToCart.cshtml" />
+    <Content Include="Views\Order\PlaceError.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -651,7 +652,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

@@ -98,12 +98,12 @@ namespace eUseControl.Web.Controllers
 
         public ShipingAddress GetUserAddress(int userId)
         {
-            UAddress address = _order.GetAddress(userId);
+            DbAddress address = _order.GetAddress(userId);
             ShipingAddress minAddress = null;
 
             if (address != null)
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<UAddress, ShipingAddress>());
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<DbAddress, ShipingAddress>());
                 var mapper = config.CreateMapper();
 
                 minAddress = mapper.Map<ShipingAddress>(address);

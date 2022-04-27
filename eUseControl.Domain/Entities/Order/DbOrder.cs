@@ -16,6 +16,9 @@ namespace eUseControl.Domain.Entities.Order
         public int OrderId { get; set; }
 
         [Required]
+        public int UserId { get; set; }
+
+        [Required]
         public int AddressId { get; set; }
 
         [Required]

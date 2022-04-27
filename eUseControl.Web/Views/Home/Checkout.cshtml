@@ -24,6 +24,7 @@
         @using (Html.BeginForm("PlaceOrder", "Order", FormMethod.Post, new { autocomplete = "off" }))
         {
             @Html.AntiForgeryToken();
+            @Html.HiddenFor(m => m.UserId, new { @value = Model.UserId })
 
         <div class="row d-flex justify-content-around">
 
@@ -100,7 +101,18 @@
             }
             else
             {
-                @Html.HiddenFor(m => m.Address, new { @value = Model.Address })
+                @Html.HiddenFor(m => m.Address.AddressId, new { @value = Model.Address.AddressId })
+                <div class="col-lg-7">
+                    <div class="billing-info-wrap">
+                        <div class="additional-info-wrap">
+                            <h4>Additional information</h4>
+                            <div class="additional-info">
+                                <label>Order notes</label>
+                                @Html.TextAreaFor(m => m.OrderNote)
+                            </div>
+                        </div>
+                    </div>
+                </div>
             }
 
             <div class="col-lg-5 mt-md-30px mt-lm-30px">
@@ -124,6 +136,7 @@
                                     {
                                         @Html.HiddenFor(m => m.OrderList[i].ProductId, new { @value = product.ProductId })
                                         @Html.HiddenFor(m => m.OrderList[i].UserId, new { @value = product.UserId })
+                                        @Html.HiddenFor(m => m.OrderList[i].CartId, new { @value = product.CartId })
                                         @Html.HiddenFor(m => m.OrderList[i].Quantity, new { @value = product.Quantity })
                                         <li>
                                             <span class="order-middle-left">@product.ProductName X @product.Quantity</span> <span class="order-price">$@product.Price</span>

@@ -98,12 +98,7 @@ namespace eUseControl.BusinessLogic.Core
 
         internal DbProduct GetProductByIdAction(int productId)
         {
-            DbProduct product;
-            using (var db = new ProductContext())
-            {
-                product = db.Products.FirstOrDefault(x => x.ProductId == productId);
-            }
-            return product;
+            return ProductById(productId);
         }
 
         internal UpdateProductResp UpdateProductAction(UpdateProductData data)
@@ -261,35 +256,7 @@ namespace eUseControl.BusinessLogic.Core
 
         internal RemoveCartResp RemoveCartElementAction(int cartId)
         {
-            int userId;
-            using (var db = new CartContext())
-            {
-                DbCart cart = db.Cart.FirstOrDefault(m => m.Id == cartId);
-                if (cart == null)
-                {
-                    return new RemoveCartResp() { Status = false, StatusMsg = "Element not found!" };
-                }
-
-                userId = cart.UserId;
-
-                db.Cart.Remove(cart);
-                db.SaveChanges();
-            }
-
-            using (var db = new UserContext())
-            {
-                UDbTable user = db.Users.FirstOrDefault(m => m.Id == userId);
-                if (user == null)
-                {
-                    return new RemoveCartResp() { Status = false, StatusMsg = "User not found!" };
-                }
-
-                user.CartProducts -= 1;             //update number of products in the cart for display in the header of the page
-
-                db.SaveChanges();
-            }
-
-            return new RemoveCartResp() { Status = true };
+            return RemoveCartElementById(cartId);
         }
 
         internal RemoveCartResp RemoveAllCartElementAction(int userId)
@@ -334,7 +301,7 @@ namespace eUseControl.BusinessLogic.Core
             {
                 using (var db = new CartContext())
                 {
-                    cart = db.Cart.FirstOrDefault(m => m.Id == item.Id);
+                    cart = db.Cart.FirstOrDefault(m => m.CartId == item.Id);
                     if (cart == null)
                     {
                         return new UpdateCartQtyResp() { Status = false, StatusMsg = "Element not found!" };

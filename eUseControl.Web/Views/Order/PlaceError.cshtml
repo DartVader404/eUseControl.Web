@@ -1,26 +1,24 @@
 ﻿
 @{
-    ViewBag.Title = "ThankYouPage";
+    ViewBag.Title = "PlaceError";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@model eUseControl.Web.Models.UserData
 <!-- Thank You area start -->
 <div class="thank-you-area">
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-md-8">
                 <div class="inner_complated">
-                    <div class="img_cmpted"><img src="~/Images/icons/cmpted_logo.png" alt=""></div>
                     <p class="dsc_cmpted">
-                        Thank you for ordering in our store. You will receive a confirmation
-                        email shortly.
+                        <h3>Some products are not in enough stock</h3>
+                    </p>
+                    <p class="dsc_cmpted">
+                        @Model.MsgStatus
                     </p>
                     <div class="btn_cmpted">
                         <a href="@Url.Action("Index", "Home")" class="shop-btn" title="Go To Shop">Continue Shopping </a>
                     </div>
-                </div>
-                <div class="main_quickorder text-align-center">
-                    <h3 class="title">Call Us for Quick Order</h3>
-                    <div class="cntct typewriter-effect"><span class="call_desk"><a href="tel:+01234567890" id="typewriter_num">01 234 567 890</a></span></div>
                 </div>
             </div>
         </div>

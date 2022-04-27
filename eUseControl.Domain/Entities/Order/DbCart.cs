@@ -12,7 +12,7 @@ namespace eUseControl.Domain.Entities.Order
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int CartId { get; set; }
 
         [Required]
         public int UserId { get; set; }

@@ -2,6 +2,7 @@
 using eUseControl.BusinessLogic.Interfaces;
 using eUseControl.Domain.Entities.Order;
 using eUseControl.Domain.Enums;
+using eUseControl.Web.Extension;
 using eUseControl.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Web.Mvc;
 
 namespace eUseControl.Web.Controllers
 {
-    public class OrderController : Controller
+    public class OrderController : BaseController
     {
         private readonly IOrder _order;
         public OrderController()
@@ -26,19 +27,20 @@ namespace eUseControl.Web.Controllers
         public ActionResult PlaceOrder(CheckoutData viewData)
         {
             int addressId;
-            if (viewData.Address == null)
+            if (viewData.Address.AddressId == 0)
             {
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<ShipingAddress, NewAddress>());
                 var mapper = config.CreateMapper();
 
                 NewAddress newAddress = mapper.Map<NewAddress>(viewData.Address);
                 newAddress.AddedDate = DateTime.Now;
+                newAddress.UserId = viewData.UserId;
 
                 addressId = _order.AddUserAddress(newAddress);
             }
             else
             {
-                addressId = _order.GetUserAddressId(viewData.UserId);
+                addressId = viewData.Address.AddressId;
             }
 
             List<PlaceOrderData> newOrderData = new List<PlaceOrderData>();
@@ -47,7 +49,9 @@ namespace eUseControl.Web.Controllers
                 PlaceOrderData newOrder = new PlaceOrderData()
                 {
                     AddressId = addressId,
+                    UserId = viewData.UserId,
                     ProductId = order.ProductId,
+                    CartId = order.CartId,
                     Quantity = order.Quantity,
                     AddedDate = DateTime.Now,
                     Status = OrderStatus.InProgres,
@@ -60,15 +64,52 @@ namespace eUseControl.Web.Controllers
             PlaceOrderResp placeOrder = _order.PlaceOrder(newOrderData);
             if (placeOrder.Status)
             {
-                return RedirectToAction("Stocks", "Admin");
+                return RedirectToAction("ThankYouPage", "Order");
             }
             else
             {
                 ModelState.AddModelError("", placeOrder.StatusMsg);
-                return RedirectToAction("Error", "Home");
+                return RedirectToAction("PlaceError", "Order", new { StatusMsg = placeOrder.StatusMsg});
+            }
+        }
+
+        public ActionResult PlaceError(string StatusMsg)
+        {
+            SessionStatus();
+            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+            {
+                return RedirectToAction("Index", "Home");
             }
 
-            return View();
+            var user = System.Web.HttpContext.Current.GetMySessionObject();
+
+            UserData u = new UserData
+            {
+                UserName = user.Username,
+                Level = user.Level,
+                CartProducts = user.CartProducts,
+                MsgStatus = StatusMsg
+            };
+            return View(u);
+        }
+
+        public ActionResult ThankYouPage()
+        {
+            SessionStatus();
+            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+            {
+                return View();
+            }
+
+            var user = System.Web.HttpContext.Current.GetMySessionObject();
+
+            UserData u = new UserData
+            {
+                UserName = user.Username,
+                Level = user.Level,
+                CartProducts = user.CartProducts,
+            };
+            return View(u);
         }
     }
 }

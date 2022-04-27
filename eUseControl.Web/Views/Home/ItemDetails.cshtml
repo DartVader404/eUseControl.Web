@@ -72,7 +72,14 @@
                                 @Html.HiddenFor(m => m.Cart.UserId, new { @value = Model.Cart.UserId });
                                 @Html.HiddenFor(m => m.Cart.ProductId, new { @value = Model.Cart.ProductId });
                             }
-
+                            <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                <span>Available: </span>
+                                <ul class="d-flex">
+                                    <li>
+                                        @Model.Product.Quantity pieces
+                                    </li>
+                                </ul>
+                            </div>
                             <div class="pro-details-quality d-flex justify-content-center">
                                 <div style="width: 80px;">
                                     @Html.TextBoxFor(m => m.Cart.Quantity, new { @class = "cart-plus-minus-box", @type = "number", @Value = "1", @max = Model.Product.Quantity, @min = "0" })

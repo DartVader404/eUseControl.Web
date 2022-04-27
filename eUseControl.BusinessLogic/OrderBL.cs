@@ -1,5 +1,6 @@
 ﻿using eUseControl.BusinessLogic.Core;
 using eUseControl.BusinessLogic.Interfaces;
+using eUseControl.Domain.Entities.Order;
 using eUseControl.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,19 @@ namespace eUseControl.BusinessLogic
 {
     internal class OrderBL : OrderApi, IOrder
     {
-        public UAddress GetAddress(int userId)
+        public DbAddress GetAddress(int userId)
         {
             return GetAddressAction(userId);
+        }
+
+        public int AddUserAddress(NewAddress address)
+        {
+            return AddUserAddressAction(address);
+        }
+
+        public PlaceOrderResp PlaceOrder(List<PlaceOrderData> data)
+        {
+            return PlaceOrderAction(data);
         }
     }
 }

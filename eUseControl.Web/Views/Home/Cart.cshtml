@@ -54,7 +54,7 @@
                                         <td class="product-price-cart"><span class="amount">$@product.Price</span></td>
                                         <td class="product-quantity">
                                             <div style="width: 80px; margin: auto;">
-                                                @Html.HiddenFor(m => m.Products[i].Id, new { @value = product.Id })
+                                                @Html.HiddenFor(m => m.Products[i].CartId, new { @value = product.CartId })
                                                 @Html.TextBoxFor(m => m.Products[i].Quantity, new { @type = "number", @max = @product.maxQuantity, @min = "0" })
                                             </div>
                                         </td>
@@ -64,7 +64,7 @@
                                         }
                                         <td class="product-subtotal">$@subtotal</td>
                                         <td class="product-remove">
-                                            <a href="@Url.Action("RemoveFromCart", "Product", new { cartId = product.Id})"><i class="fa fa-times"></i></a>
+                                            <a href="@Url.Action("RemoveFromCart", "Product", new { cartId = product.CartId})"><i class="fa fa-times"></i></a>
                                         </td>
                                     </tr>
                                     i++;

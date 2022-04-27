@@ -1,4 +1,5 @@
-﻿using eUseControl.Domain.Entities.User;
+﻿using eUseControl.Domain.Entities.Order;
+using eUseControl.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace eUseControl.BusinessLogic.Interfaces
 {
     public interface IOrder
     {
-        UAddress GetAddress(int userId);
+        DbAddress GetAddress(int userId);
+        int AddUserAddress(NewAddress address);
+        PlaceOrderResp PlaceOrder(List<PlaceOrderData> data);
     }
 }

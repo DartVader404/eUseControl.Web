@@ -190,20 +190,7 @@ namespace eUseControl.Web.Controllers
             return View(u);
         }
 
-        public ActionResult ThankYouPage()
-        {
-            return View();
-        }
         public ActionResult EmailSend()
-        {
-            return View();
-        }
-        public ActionResult AddedToCart()
-        {
-            return View();
-        }
-
-        public ActionResult PassChanged()
         {
             return View();
         }

@@ -7,6 +7,8 @@ namespace eUseControl.Web.Models
 {
     public class ShipingAddress
     {
+        public int UserId { get; set; }
+        public int AddressId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Country { get; set; }

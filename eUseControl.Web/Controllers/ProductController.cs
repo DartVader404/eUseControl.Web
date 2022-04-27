@@ -134,7 +134,7 @@ namespace eUseControl.Web.Controllers
 
                 if (AddToCartResp.Status)
                 {
-                    return RedirectToAction("AddedToCart", "Home");
+                    return RedirectToAction("AddedToCart", "Product");
                 }
                 else
                 {
@@ -143,6 +143,11 @@ namespace eUseControl.Web.Controllers
                 }
             }
             return RedirectToAction("Error", "Home");
+        }
+
+        public ActionResult AddedToCart()
+        {
+            return View();
         }
 
         public ActionResult RemoveFromCart(string cartId)

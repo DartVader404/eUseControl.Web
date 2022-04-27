@@ -1,4 +1,4 @@
-﻿using eUseControl.Domain.Entities.User;
+﻿using eUseControl.Domain.Entities.Order;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,14 +8,13 @@ using System.Threading.Tasks;
 
 namespace eUseControl.BusinessLogic.DBModel
 {
-    public class AddressContext : DbContext
+    public class OrderContext : DbContext
     {
-        public AddressContext() :
+        public OrderContext() :
             base("name=eUseControl")
         {
 
         }
-        public virtual DbSet<DbAddress> Addresses { get; set; }
+        public virtual DbSet<DbOrder> Orders { get; set; }
     }
 }
-

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace eUseControl.Domain.Entities.User
 {
-    public class UAddress
+    public class DbAddress
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

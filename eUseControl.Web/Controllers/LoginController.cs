@@ -7,6 +7,7 @@ using eUseControl.BusinessLogic.Interfaces;
 using eUseControl.BusinessLogic;
 using eUseControl.Domain.Entities.User;
 using eUseControl.Web.Models;
+using eUseControl.Web.Extension;
 
 namespace eUseControl.Web.Controllers
 {
@@ -109,7 +110,7 @@ namespace eUseControl.Web.Controllers
 
                 if (userChangePass.Status)
                 {
-                    return RedirectToAction("PassChanged", "Home");
+                    return RedirectToAction("PassChanged", "Login");
                 }
                 else
                 {
@@ -118,6 +119,25 @@ namespace eUseControl.Web.Controllers
                 }
             }
             return RedirectToAction("Error", "Home");
+        }
+
+        public ActionResult PassChanged()
+        {
+            SessionStatus();
+            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+            {
+                return View();
+            }
+
+            var user = System.Web.HttpContext.Current.GetMySessionObject();
+
+            UserData u = new UserData
+            {
+                UserName = user.Username,
+                Level = user.Level,
+                CartProducts = user.CartProducts,
+            };
+            return View(u);
         }
     }
 }
