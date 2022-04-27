@@ -123,5 +123,17 @@ namespace eUseControl.Web.Controllers
 
             return minOrder;
         }
+
+        public List<UserOrderData> GetUserOrders(int userId)
+        {
+            List<OrderMinimal> orders = _order.GetUserOrders(userId);
+
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<OrderMinimal, UserOrderData>());
+            var mapper = config.CreateMapper();
+
+            List<UserOrderData> viewOrder = mapper.Map<List<UserOrderData>>(orders);
+
+            return viewOrder;
+        }
     }
 }

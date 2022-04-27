@@ -569,6 +569,7 @@
     <Compile Include="Models\ShipingAddress.cs" />
     <Compile Include="Models\StocksData.cs" />
     <Compile Include="Models\UserData.cs" />
+    <Compile Include="Models\UserOrderData.cs" />
     <Compile Include="Models\UserRegister.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

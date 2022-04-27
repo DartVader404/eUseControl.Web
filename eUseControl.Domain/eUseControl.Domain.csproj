@@ -48,6 +48,7 @@
     <Compile Include="Entities\Order\DbCart.cs" />
     <Compile Include="Entities\Order\DbOrder.cs" />
     <Compile Include="Entities\Order\NewAddress.cs" />
+    <Compile Include="Entities\Order\OrderMinimal.cs" />
     <Compile Include="Entities\Order\PlaceOrderData.cs" />
     <Compile Include="Entities\Order\PlaceOrderResp.cs" />
     <Compile Include="Entities\Order\RemoveCartResp.cs" />
@@ -60,7 +61,6 @@
     <Compile Include="Entities\Product\DbProduct.cs" />
     <Compile Include="Entities\Product\DeleteProductResp.cs" />
     <Compile Include="Entities\Product\ImgPath.cs" />
-    <Compile Include="Entities\Product\Order.cs" />
     <Compile Include="Entities\Product\UpdateProductData.cs" />
     <Compile Include="Entities\Product\UpdateProductResp.cs" />
     <Compile Include="Entities\User\Session.cs" />

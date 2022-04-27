@@ -158,8 +158,8 @@ namespace eUseControl.Web.Controllers
                 Level = user.Level,
                 CartProducts = user.CartProducts,
                 Password = pass,
-                Address = GetUserAddress(user.Id)
-                //Orders = GetUserOrders(user.Id)
+                Address = GetUserAddress(user.Id),
+                Orders = GetUserOrders(user.Id)
             };
             return View(u);
         }

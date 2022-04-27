@@ -32,5 +32,10 @@ namespace eUseControl.BusinessLogic
             return UpdateUserAddressAction(data);
         }
 
+        public List<OrderMinimal> GetUserOrders(int userId)
+        {
+            return GetUserOrdersAction(userId);
+        }
+
     }
 }

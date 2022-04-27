@@ -124,6 +124,21 @@ namespace eUseControl.BusinessLogic.Core
             return new UpdateAddressResp() { Status = true };
         }
 
+        internal List<OrderMinimal> GetUserOrdersAction(int userId)
+        {
+            List<DbOrder> dbData;
+            
+            using (var db = new OrderContext())
+            {
+                dbData = db.Orders.Where(m => m.UserId == userId).ToList();
+            }
 
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<DbOrder, OrderMinimal>());
+            var mapper = config.CreateMapper();
+
+            List<OrderMinimal> minOrder = mapper.Map<List<OrderMinimal>>(dbData);
+
+            return minOrder;
+        }
     }
 }

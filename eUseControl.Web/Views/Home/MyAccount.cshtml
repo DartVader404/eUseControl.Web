@@ -61,22 +61,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Sony WH-1000XM4 Midnight Blue</td>
-                                        <td>1</td>
-                                        <td>02/03/2021 <br> 08:12</td>
-                                        <td>$350.90</td>
-                                        <td>$350.90</td>
-                                        <td style="color: green;">Sent</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Apple Watch SE (MYDT2) Gray</td>
-                                        <td>1</td>
-                                        <td>02/03/2021 <br> 08:12</td>
-                                        <td>$399.90</td>
-                                        <td>$399.90</td>
-                                        <td style="color: blue;">In progress</td>
-                                    </tr>
+                                    @foreach (var order in Model.Orders)
+                                    {
+                                        int total = order.Quantity * order.Price;
+                                        DateTime time = order.AddedDate;
+
+                                        <tr>
+                                            <td>@order.ProductName</td>
+                                            <td>@order.Quantity</td>
+                                            <td>@time.ToString("dd/MM/yyyy") <br> @time.ToString("HH:mm")</td>
+                                            <td>$@order.Price</td>
+                                            <td>$@total</td>
+                                            @if (order.Status == eUseControl.Domain.Enums.OrderStatus.Sent)
+                                            { 
+                                                <td style="color: green;">Sent</td>
+                                            }
+                                            else
+                                            { 
+                                                <td style="color: blue;">In progress</td>
+                                            }
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
                         </div>
