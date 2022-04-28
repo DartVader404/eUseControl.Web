@@ -19,12 +19,14 @@ namespace eUseControl.Web.Controllers
         private readonly ISession _session;
         private readonly IProduct _product;
         private readonly IOrder _order;
+        private readonly IAdmin _admin;
         public BaseController()
         {
             var bl = new BusinessLogic.BusinessLogic();
             _session = bl.GetSessionBL();
             _product = bl.GetProductBL();
             _order = bl.GetOrderBL();
+            _admin = bl.GetAdminBL();
         }
 
         public void SessionStatus()
@@ -134,6 +136,29 @@ namespace eUseControl.Web.Controllers
             List<UserOrderData> viewOrder = mapper.Map<List<UserOrderData>>(orders);
 
             return viewOrder;
+        }
+
+        public List<AdminOrders> GetNewOrders()
+        {
+            List<OrderMinimal>  data = _admin.GetNewOrders();
+            List<AdminOrders> orders = new List<AdminOrders>();
+
+            var orderConfig = new MapperConfiguration(cfg => cfg.CreateMap<OrderMinimal, AdminOrders>());
+            var orderMapper = orderConfig.CreateMapper();
+
+            var addressConfig = new MapperConfiguration(cfg => cfg.CreateMap<DbAddress, ShipingAddress>());
+            var addressMapper = addressConfig.CreateMapper();
+
+            foreach (var item in data)
+            {
+                AdminOrders order = orderMapper.Map<AdminOrders>(item);
+
+                order.Address = addressMapper.Map<ShipingAddress>(_order.GetAddress(item.UserId));
+
+                orders.Add(order);
+            }
+
+            return orders;
         }
     }
 }

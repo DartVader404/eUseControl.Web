@@ -24,10 +24,12 @@ namespace eUseControl.Web.Controllers
         }
 
         [ModeratorAdminMod]
-        public ActionResult AddProduct(NewProductData inputData)
+        public ActionResult AddProduct(StocksData viewData)
         {
             if (ModelState.IsValid)
             {
+                NewProductData inputData = viewData.newProductData;
+
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<NewProductData, AddProductData>());
                 var mapper = config.CreateMapper();
 
@@ -59,8 +61,14 @@ namespace eUseControl.Web.Controllers
 
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<DbProduct, EditProductData>());
                 var mapper = config.CreateMapper();
+
                 EditProductData productData = mapper.Map<EditProductData>(product);
                 productData.Paths = paths;
+
+                var user = System.Web.HttpContext.Current.GetMySessionObject();
+
+                productData.UserName = user.Username;
+                productData.Level = user.Level;
 
                 return View(productData);
             }

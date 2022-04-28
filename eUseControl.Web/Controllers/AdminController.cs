@@ -1,4 +1,5 @@
-﻿using eUseControl.Web.CustomAttributes;
+﻿using eUseControl.BusinessLogic.Interfaces;
+using eUseControl.Web.CustomAttributes;
 using eUseControl.Web.Extension;
 using eUseControl.Web.Models;
 using System;
@@ -13,6 +14,13 @@ namespace eUseControl.Web.Controllers
 {
     public class AdminController : BaseController
     {
+        private readonly IAdmin _admin;
+        public AdminController()
+        {
+            var bl = new BusinessLogic.BusinessLogic();
+            _admin = bl.GetAdminBL();
+        }
+
         // GET: Admin
         [ModeratorAdminMod]
         public ActionResult Stocks()
@@ -26,8 +34,8 @@ namespace eUseControl.Web.Controllers
                 Level = user.Level,
                 Products = GetProduct()
             };
-            ViewBag.Data = data;
-            return View();
+
+            return View(data);
         }
 
         [AdminMod]
@@ -52,14 +60,14 @@ namespace eUseControl.Web.Controllers
             SessionStatus();
             var user = System.Web.HttpContext.Current.GetMySessionObject();     //obtain user data from session
 
-            IndexData data = new IndexData()    //merge product and user data to send in index 
+            ANewOrdersData data = new ANewOrdersData()    //merge product and user data to send in index 
             {
                 UserName = user.Username,
                 Level = user.Level,
-                Products = GetProduct()
+                Orders = GetNewOrders()
             };
-            ViewBag.Data = data;
-            return View();
+
+            return View(data);
         }
 
         [AdminMod]

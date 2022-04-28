@@ -50,7 +50,7 @@
                     <li><a href="@Url.Action("Index", "Home")">Home</a></li>
                     <li><a href="@Url.Action("Stocks", "Admin")">Stocks</a></li>
                     <li><a href="@Url.Action("NewOrders", "Admin")">New Orders</a></li>
-                    @if (ViewBag.Data != null && ViewBag.Data.Level == eUseControl.Domain.Enums.URole.Admin)
+                    @if (Model != null && Model.Level == eUseControl.Domain.Enums.URole.Admin)
                     {
                         <li><a href="@Url.Action("CustomersList", "Admin")">Customers List</a></li>
                         <li><a href="@Url.Action("OrdersHistory", "Admin")">Orders History</a></li>

@@ -2,18 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace eUseControl.Domain.Entities.Order
+namespace eUseControl.Web.Models
 {
-    public class OrderMinimal
+    public class AdminOrders
     {
-        public int UserId { get; set; }
         public string ProductName { get; set; }
         public int Quantity { get; set; }
         public int Price { get; set; }
         public DateTime AddedDate { get; set; }
         public OrderStatus Status { get; set; }
+        public ShipingAddress Address { get; set; }
     }
 }

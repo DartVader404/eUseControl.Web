@@ -18,5 +18,10 @@ namespace eUseControl.BusinessLogic
         {
             return new OrderBL();
         }
+
+        public IAdmin GetAdminBL()
+        {
+            return new AdminBL();
+        }
     }
 }

@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+@model eUseControl.Web.Models.ANewOrdersData
+
 <div class="page-body">
     <div class="row">
         <div class="col-sm-12">
@@ -49,39 +51,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row" class="align-middle">1</th>
-                                <td class="align-middle">Apple MacBook Air 13 (2020) Gray</td>
-                                <td class="align-middle">1</td>
-                                <td class="align-middle">02/03/2021 <br> 08:12</td>
-                                <td class="align-middle">Mark <br> Otto</td>
-                                <td class="align-middle">685 Carpenter Ave. Des Plaines, IL 60016 <br>810-388-5125</td>
-                                <td class="align-middle">$1238.50</td>
-                                <td class="align-middle">$1238.50</td>
-                                <td><div><a href="#"><button type="button" class="btn btn-primary btn" style="width: 80px; height: 50px;">Sent</button></a></div></td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="align-middle">2</th>
-                                <td class="align-middle">Wireless On-Ear JBL T500BT Black</td>
-                                <td class="align-middle">3</td>
-                                <td class="align-middle">01/03/2021 <br> 18:15</td>
-                                <td class="align-middle">Jacob <br> Thornton</td>
-                                <td class="align-middle">49 Tailwater Drive Harrisonburg, VA 22801 <br>870-425-4181</td>
-                                <td class="align-middle">$138.50</td>
-                                <td class="align-middle">$406.5</td>
-                                <td><div><a href="#"><button type="button" class="btn btn-primary btn" style="width: 80px; height: 50px;">Sent</button></a></div></td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="align-middle">2</th>
-                                <td class="align-middle">Samsung Galaxy S21 FE 6 GB/ 128 GB Gray</td>
-                                <td class="align-middle">1</td>
-                                <td class="align-middle">01/01/2021 <br> 19:35</td>
-                                <td class="align-middle">Larry <br> the Bird</td>
-                                <td class="align-middle">432 Acacia Rd. Sioux City, IA 51106 <br>580-265-0802</td>
-                                <td class="align-middle">$538.50</td>
-                                <td class="align-middle">$538.50</td>
-                                <td><div><a href="#"><button type="button" class="btn btn-primary btn" style="width: 80px; height: 50px;">Sent</button></a></div></td>
-                            </tr>
+                            @{ 
+                                int i = 1;
+                                double total;
+                                DateTime time;
+                            }
+                            @foreach (var order in Model.Orders)
+                            {
+                                total = order.Quantity * order.Price;
+                                time = order.AddedDate;
+                                <tr>
+                                    <th scope="row" class="align-middle">@i</th>
+                                    <td class="align-middle">@order.ProductName</td>
+                                    <td class="align-middle">@order.Quantity</td>
+                                    <td class="align-middle">@time.ToString("dd/MM/yyyy")<br>@time.ToString("HH:mm")</td>
+                                    <td class="align-middle">@order.Address.FirstName<br>@order.Address.LastName</td>
+                                    <td class="align-middle">@order.Address.StreetAddress @order.Address.City @order.Address.State @order.Address.Country @order.Address.PostCode<br>@order.Address.Phone</td>
+                                    <td class="align-middle">$@order.Price</td>
+                                    <td class="align-middle">$@total</td>
+                                    <td><div><a href="#"><button type="button" class="btn btn-primary btn" style="width: 80px; height: 50px;">Sent</button></a></div></td>
+                                </tr>
+                                i++;
+                            }
                         </tbody>
                     </table>
                 </div>

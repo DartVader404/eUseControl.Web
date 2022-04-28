@@ -12,5 +12,6 @@ namespace eUseControl.Web.Models
         public string UserName { get; set; }
         public URole Level { get; set; }
         public List<DbProduct> Products { get; set; }
+        public NewProductData newProductData { get; set; }  
     }
 }
